@@ -10,7 +10,7 @@ export default function AssignmentEditor() {
           The assignment is available online Submit a link to the landing page of
         </textarea>
         <p />
-        <table border="0">
+        <table>
           <tr>
             <td align="right">
               <label htmlFor="wd-points">Points </label>
@@ -35,17 +35,17 @@ export default function AssignmentEditor() {
             </td>
             <td>
                 <select id="wd-display-grade-as">
-                    <option value="Percentage">Percentage</option>
+                    <option value="PERCENTAGE">Percentage</option>
                 </select>
             </td>
           </tr>
           <tr>
             <td align="right">
-            <label htmlFor="wd-subsmission-type">Submission Type </label>
+            <label htmlFor="wd-submission-type">Submission Type </label>
             </td>
             <td>
-                <select id="wd-submimssion-type">
-                    <option value="Online">Online</option>
+                <select id="wd-submission-type">
+                    <option value="ONLINE">Online</option>
                 </select>
             </td>
         </tr>
@@ -53,21 +53,21 @@ export default function AssignmentEditor() {
             <td></td>
             <td>
                 <td>
-                    <label htmlFor="wd-submission-type">Online Entry Options</label> <br/>
-                    <input type="checkbox" name="text-entry" id="wd-submission-type"/>
-                    <label htmlFor="submission-type">Text Entry</label> <br/>
+                    <label>Online Entry Options</label> <br/>
+                    <input type="checkbox" name="wd-submission-type" id="wd-text-entry"/>
+                    <label htmlFor="wd-text-entry">Text Entry</label> <br/>
     
-                    <input type="checkbox" name="website-url" id="wd-submission-type"/>
-                    <label htmlFor="submission-type">Website URL</label> <br/>
+                    <input type="checkbox" name="wd-submission-type" id="wd-website-url"/>
+                    <label htmlFor="wd-website-url">Website URL</label> <br/>
 
-                    <input type="checkbox" name="media-recordings" id="wd-submission-type"/>
-                    <label htmlFor="submission-type">Media Recordings</label> <br/>
+                    <input type="checkbox" name="wd-submission-type" id="wd-media-recordings"/>
+                    <label htmlFor="wd-media-recordings">Media Recordings</label> <br/>
 
-                    <input type="checkbox" name="Student Annotation" id="wd-submission-type"/>
-                    <label htmlFor="submission-type">Student Annotation</label> <br/>
+                    <input type="checkbox" name="wd-submission-type" id="wd-student-annotation"/>
+                    <label htmlFor="wd-student-annotation">Student Annotation</label> <br/>
 
-                   <input type="checkbox" name="file-uploads" id="wd-submission-type"/>
-                    <label htmlFor="submission-type">File Uploads</label> <br/> <br/>
+                    <input type="checkbox" name="wd-submission-type" id="wd-file-upload"/>
+                    <label htmlFor="wd-file-upload">File Uploads</label> <br/> <br/>
                 </td>
             </td>
           </tr>
