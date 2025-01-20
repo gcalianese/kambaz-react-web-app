@@ -266,12 +266,10 @@ src="https://www.staradvertiser.com/wp-content/uploads/2021/08/web1_Starship-gap
 
   <h4>Anchor tag</h4>
     Please
-    <a href="https://www.lipsum.com" id="wd-lipsum"> click here </a>
-    to get dummy text<br/>
+    <a href="https://www.lipsum.com" id="wd-lipsum"> click here </a>to get dummy text<br/>
 
     Please
-    <a href="https://github.com/gcalianese/kambaz-react-web-app" id="wd-github"> click here </a>
-    to get to GitHub repo<br/>
+    <a href="https://github.com/gcalianese/kambaz-react-web-app" id="wd-github"> click here </a>to get to GitHub repo<br/>
 
       </div>
   );}
