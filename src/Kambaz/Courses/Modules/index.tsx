@@ -1,12 +1,17 @@
 export default function Modules() {
     return (
       <div>
-        <button>Collapse All</button>
-        <button>View Progress</button>
-        <select id="wd-publish-all">
-            <option value="publish-all">Publish All</option>
-        </select>
-        <button>+ Module</button>
+        <table>
+          <tr>
+            <td><button>Collapse All</button></td>
+            <td><button>View Progress</button></td>
+            <td><select id="wd-publish-all">
+                  <option value="publish-all">Publish All</option>
+                </select>
+            </td>
+            <td><button>+ Module</button></td>
+          </tr>
+        </table>
 
         <ul id="wd-modules">
           <li className="wd-module">
@@ -43,8 +48,8 @@ export default function Modules() {
                 </ul>
                   <li><span className="wd-title">SLIDES</span></li>
                <ul className="wd-content">
-                  <li className="wd-content-item">Introduction to HTML and DOM</li>
-                  <li className="wd-content-item">Formatting Web content with Headings and</li>
+                  <li className="wd-content-item">Introduction to HTML and the DOM</li>
+                  <li className="wd-content-item">Formatting Web content with Headings and Paragraphs</li>
                   <li className="wd-content-item">Formatting content with Lists and Tables</li>
                 </ul>
               </li>
