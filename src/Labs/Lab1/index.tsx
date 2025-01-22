@@ -36,7 +36,7 @@ This is the third paragraph. Wrap each paragraph with the paragraph tag to tell 
                 <li>Flip and cook the other side.</li>
                 <li>Serve and enjoy!</li>
             </ol>
-            My favorite recipe:
+            My favorite recipe: Fried Egg
             <ol id="wd-your-favorite-recipe">
                 <li>Melt butter in heated pan</li>
                 <li>Swirl butter along bottom of pan</li>
@@ -51,13 +51,14 @@ This is the third paragraph. Wrap each paragraph with the paragraph tag to tell 
                 <li>Lord of the Rings</li>
                 <li>Ender's Game</li>
                 <li>Red Mars</li>
-                 <li>The Forever War</li>
+                <li>The Forever War</li>
             </ul>
             Your favorite books (in no particular order)
             <ul id="wd-your-books">
                 <li>Snail Trail</li>
                 <li>Diary of a Wimpy Kid</li>
                 <li>Harry Potter</li>
+                <li>Magic Tree House</li>
             </ul>
         </div>
         <div id="wd-tables">

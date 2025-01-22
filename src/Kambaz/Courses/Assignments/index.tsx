@@ -30,7 +30,7 @@ export default function Assignments() {
                 </a>
           </li>
           Multiple Modules | <b>Not available until</b> May 20 at 12:00am | <br/>
-          <b>Due</b> May 127 at 11:59pm | 100 pts
+          <b>Due</b> May 27 at 11:59pm | 100 pts
         </ul>
       </div>
   );}
