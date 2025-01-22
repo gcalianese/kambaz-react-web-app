@@ -1,12 +1,10 @@
-import { Link } from "react-router";
-
 export default function AssignmentEditor() {
     return (
       <div id="wd-assignments-editor">
         <label htmlFor="wd-name"><b>Assignment Name</b></label>
         <p/>
         <input id="wd-name" value="A1 - ENV + HTML" /><br /><br />
-        <textarea id="wd-description" cols="44" rows="9">
+        <textarea id="wd-description" cols={44} rows={9}>
           The assignment is available online Submit a link to the landing page of your Web application running on Netflify.
           The landing page should include the following: Your full name and section Links to each of the lab assignments Link to the Kanbas application
           Links to all relevant source code repositories
@@ -118,7 +116,7 @@ export default function AssignmentEditor() {
             </table>
           </tr>
           <tr>
-            <td colspan="2">
+            <td colSpan={2}>
                 <hr />
             </td>
           </tr>
