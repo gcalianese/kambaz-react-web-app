@@ -9,7 +9,7 @@ export default function Padding() {
                 Padded bottom right
             </div>
             <div className="wd-padding-fat wd-border-fat wd-border-yellow wd-border-solid wd-bg-color-blue wd-fg-color-white">
-                Padded all around 
+                Padded all around
             </div>
         </div>
 

@@ -17,4 +17,5 @@ export default function Labs() {
         <Route path="Lab3" element={<Lab3 />} />
       </Routes>
     </div>
-);}
+  );
+}

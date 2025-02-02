@@ -7,7 +7,7 @@ export default function Dashboard() {
       <div id="wd-dashboard-courses">
         <div className="wd-dashboard-course">
           <Link to="/Kambaz/Courses/1234/Home"
-                className="wd-dashboard-course-link" >
+            className="wd-dashboard-course-link" >
             <img src="/images/reactjs.jpg" width={200} />
             <div>
               <h5> CS1234 React JS </h5>
@@ -17,9 +17,9 @@ export default function Dashboard() {
             </div>
           </Link>
         </div>
-        <div className="wd-dashboard-course"> 
-        <Link to="/Kambaz/Courses/1111/Home"
-                className="wd-dashboard-course-link" >
+        <div className="wd-dashboard-course">
+          <Link to="/Kambaz/Courses/1111/Home"
+            className="wd-dashboard-course-link" >
             <img src="/images/astronomy.jpg" width={200} />
             <div>
               <h5> ASTR1111 Intro to Astronomy </h5>
@@ -29,9 +29,9 @@ export default function Dashboard() {
             </div>
           </Link>
         </div>
-        <div className="wd-dashboard-course"> 
-        <Link to="/Kambaz/Courses/1000/Home"
-                className="wd-dashboard-course-link" >
+        <div className="wd-dashboard-course">
+          <Link to="/Kambaz/Courses/1000/Home"
+            className="wd-dashboard-course-link" >
             <img src="/images/chemistry.jpg" width={200} />
             <div>
               <h5> SCI1000 Chemistry </h5>
@@ -41,9 +41,9 @@ export default function Dashboard() {
             </div>
           </Link>
         </div>
-        <div className="wd-dashboard-course"> 
-        <Link to="/Kambaz/Courses/6000/Home"
-                className="wd-dashboard-course-link" >
+        <div className="wd-dashboard-course">
+          <Link to="/Kambaz/Courses/6000/Home"
+            className="wd-dashboard-course-link" >
             <img src="/images/astronomy.jpg" width={200} />
             <div>
               <h5> CS6000 Cloud Computing</h5>
@@ -53,9 +53,9 @@ export default function Dashboard() {
             </div>
           </Link>
         </div>
-        <div className="wd-dashboard-course"> 
-        <Link to="/Kambaz/Courses/2000/Home"
-                className="wd-dashboard-course-link" >
+        <div className="wd-dashboard-course">
+          <Link to="/Kambaz/Courses/2000/Home"
+            className="wd-dashboard-course-link" >
             <img src="/images/painting.jpg" width={200} />
             <div>
               <h5> ART2000 Color Theory </h5>
@@ -65,9 +65,9 @@ export default function Dashboard() {
             </div>
           </Link>
         </div>
-        <div className="wd-dashboard-course"> 
-        <Link to="/Kambaz/Courses/3500/Home"
-                className="wd-dashboard-course-link" >
+        <div className="wd-dashboard-course">
+          <Link to="/Kambaz/Courses/3500/Home"
+            className="wd-dashboard-course-link" >
             <img src="/images/software.jpg" width={200} />
             <div>
               <h5> CS3500 Object-Oriented Design </h5>
@@ -77,9 +77,9 @@ export default function Dashboard() {
             </div>
           </Link>
         </div>
-        <div className="wd-dashboard-course"> 
-        <Link to="/Kambaz/Courses/2500/Home"
-                className="wd-dashboard-course-link" >
+        <div className="wd-dashboard-course">
+          <Link to="/Kambaz/Courses/2500/Home"
+            className="wd-dashboard-course-link" >
             <img src="/images/statistics.jpg" width={200} />
             <div>
               <h5> MATH2500 Probability and Statistics </h5>
@@ -89,9 +89,9 @@ export default function Dashboard() {
             </div>
           </Link>
         </div>
-        <div className="wd-dashboard-course"> 
-        <Link to="/Kambaz/Courses/3302/Home"
-                className="wd-dashboard-course-link" >
+        <div className="wd-dashboard-course">
+          <Link to="/Kambaz/Courses/3302/Home"
+            className="wd-dashboard-course-link" >
             <img src="/images/writing.jpg" width={200} />
             <div>
               <h5> ENGW3302 Advanced Writing </h5>
@@ -101,7 +101,8 @@ export default function Dashboard() {
             </div>
           </Link>
         </div>
-        
+
       </div>
     </div>
-);}
+  );
+}
