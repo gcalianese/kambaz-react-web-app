@@ -3,14 +3,13 @@ import { FaCheckCircle } from "react-icons/fa";
 import { BiImport } from "react-icons/bi";
 import { LiaFileImportSolid } from "react-icons/lia";
 import { Button } from "react-bootstrap";
-import { CiBellOn } from "react-icons/ci";
 import { TiChartBar } from "react-icons/ti";
-import { IoMegaphoneOutline } from "react-icons/io5";
-import { ImTarget } from "react-icons/im";
-import { LuCircleArrowOutUpRight } from "react-icons/lu";
+import { PiHouseLineFill } from "react-icons/pi";
+import { FaBell } from "react-icons/fa6";
+import { VscMegaphone } from "react-icons/vsc";
 
 
-{/* Find more icons */ }
+
 export default function CourseStatus() {
   return (
     <div id="wd-course-status" style={{ width: "350px" }}>
@@ -27,16 +26,16 @@ export default function CourseStatus() {
       <Button variant="secondary" size="lg" className="w-100 mt-1 text-start">
         <BiImport className="me-2 fs-5" /> Import Existing Content </Button>
       <Button variant="secondary" size="lg" className="w-100 mt-1 text-start">
-        <LuCircleArrowOutUpRight className="me-2 fs-5" /> Import from Commons </Button>
+        <LiaFileImportSolid className="me-2 fs-5" /> Import from Commons </Button>
       <Button variant="secondary" size="lg" className="w-100 mt-1 text-start">
-        <ImTarget className="me-2 fs-5" /> Choose Home Page </Button>
+        <PiHouseLineFill className="me-2 fs-5" /> Choose Home Page </Button>
       <Button variant="secondary" size="lg" className="w-100 mt-1 text-start">
         <TiChartBar className="me-2 fs-5" /> View Course Stream </Button>
       <Button variant="secondary" size="lg" className="w-100 mt-1 text-start">
-        <IoMegaphoneOutline className="me-2 fs-5" /> New Announcement </Button>
+        <VscMegaphone className="me-2 fs-5" /> New Announcement </Button>
       <Button variant="secondary" size="lg" className="w-100 mt-1 text-start">
         <TiChartBar className="me-2 fs-5" /> New Analytics </Button>
       <Button variant="secondary" size="lg" className="w-100 mt-1 text-start">
-        <CiBellOn className="me-2 fs-5" /> View Course Notifications </Button>
+        <FaBell className="me-2 fs-5" /> View Course Notifications </Button>
     </div>);
 }
