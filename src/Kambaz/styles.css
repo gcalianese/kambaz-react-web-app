@@ -101,7 +101,7 @@ body * {
 
 #wd-search-assignment {
     width: 45%;
-    padding-left: 30px;   
+    padding-left: 30px;
     height: 40px;
     font-size: 16px;
 }
@@ -125,4 +125,13 @@ body * {
 
 .wd-black-text {
     color: black;
+}
+
+.btn-sign-out {
+    --bs-btn-color: white !important;
+    --bs-btn-bg: red !important;
+    --bs-btn-border-color: red !important;
+    --bs-btn-hover-color: white !important;
+    --bs-btn-hover-bg: darkred !important;
+    --bs-btn-hover-border-color: darkred !important;
 }
