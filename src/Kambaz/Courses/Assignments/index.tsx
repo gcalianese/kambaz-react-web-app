@@ -31,7 +31,7 @@ export default function Assignments() {
                   <LuNotebookPen className="wd-assignment-icon" />
                 </span>
                 <div className="wd-assignment-text">
-                  <label className="wd-assignment-name">A1 - ENV + HTML </label>
+                  <a href="#/Kambaz/Courses/1234/Assignments/123" className="wd-assignment-name">A1 - ENV + HTML </a>
                   <label className="wd-assignment-description">
                     <span className="text-danger"> Multiple Modules </span> | <span className="wd-bold">
                       Not available until
@@ -45,7 +45,7 @@ export default function Assignments() {
                   <LuNotebookPen className="wd-assignment-icon" />
                 </span>
                 <div className="wd-assignment-text">
-                  <label className="wd-assignment-name">A2 CSS + BOOTSTRAP</label>
+                  <a href="#/Kambaz/Courses/1234/Assignments/123" className="wd-assignment-name">A2 CSS + BOOTSTRAP</a>
                   <label className="wd-assignment-description">
                     <span className="text-danger"> Multiple Modules </span> | <span className="wd-bold">
                       Not available until
@@ -59,7 +59,7 @@ export default function Assignments() {
                   <LuNotebookPen className="wd-assignment-icon" />
                 </span>
                 <div className="wd-assignment-text">
-                  <label className="wd-assignment-name">A3 - JAVASCRIPT + REACT</label>
+                  <a href="#/Kambaz/Courses/1234/Assignments/123" className="wd-assignment-name">A3 - JAVASCRIPT + REACT</a>
                   <label className="wd-assignment-description">
                     <span className="text-danger"> Multiple Modules </span> | <span className="wd-bold">
                       Not available until

@@ -59,6 +59,8 @@ body * {
 }
 
 .wd-assignment-name {
+    text-decoration: none;
+    color: black;
     font-size: 16px;
     font-family: Arial, Helvetica, sans-serif;
     display: block;
@@ -134,4 +136,42 @@ body * {
     --bs-btn-hover-color: white !important;
     --bs-btn-hover-bg: darkred !important;
     --bs-btn-hover-border-color: darkred !important;
+}
+
+.wd-textarea-container {
+    min-height: 275px;
+    max-height: 500px;
+    width: 550px;
+}
+
+.textarea {
+    resize: both;
+    height: 200px;
+    width: 550px;
+    min-height: 200px;
+    max-height: 400px;
+    min-width: 300px;
+    max-width: 650px;
+}
+
+.wd-row {
+    align-content: center;
+    height: 40px;
+    margin-bottom: 5px;
+    vertical-align: middle;
+}
+
+.wd-row-small {
+    height: 22px;
+    margin-bottom: 4px;
+}
+
+.wd-slight-right {
+    margin-left: 3px;
+}
+
+.wd-assignment-dates-container {
+    height: 230px;
+    min-width: 300px;
+    max-width: 400px;
 }

@@ -1,136 +1,134 @@
+import { Form, Row, Col, Button } from "react-bootstrap";
+
+
 export default function AssignmentEditor() {
   return (
-    <div id="wd-assignments-editor">
-      <label htmlFor="wd-name"><b>Assignment Name</b></label>
-      <p />
-      <input id="wd-name" value="A1 - ENV + HTML" /><br /><br />
-      <textarea id="wd-description" cols={44} rows={9}>
-        The assignment is available online Submit a link to the landing page of your Web application running on Netlify.
-        The landing page should include the following: Your full name and section Links to each of the lab assignments Link to the Kanbas application
-        Links to all relevant source code repositories
-        The Kanbas application should include a link to navigate back to the landing page.
-      </textarea>
-      <p />
-      <table>
-        <tr>
-          <td align="right">
-            <label htmlFor="wd-points">Points </label>
-          </td>
-          <td>
-            <input id="wd-points" value={100} />
-          </td>
-        </tr>
-        <br />
-        <tr>
-          <td align="right">
-            <label htmlFor="wd-group">Assignment Group </label>
-          </td>
-          <td>
-            <select id="wd-group">
+    <div id="wd-assignments-editor d-flex">
+      <label htmlFor="wd-name" className="mb-3"><span className="wd-bold">Assignment Name</span></label>
+
+      <div className="wd-textarea-container">
+        <Form.Control id="wd-name" value="A1 - ENV + HTML" className="mb-3" />
+        <Form.Control as="textarea" id="wd-description" className="mb-5 textarea">
+          The assignment is available online Submit a link to the landing page of your Web application running on Netlify.
+          The landing page should include the following: Your full name and section Links to each of the lab assignments Link to the Kanbas application
+          Links to all relevant source code repositories
+          The Kanbas application should include a link to navigate back to the landing page.
+        </Form.Control>
+      </div>
+
+      <Col className="d-flex">
+        <Col xs="3" className="text-end">
+          <Row className="wd-row">
+            <Form.Label htmlFor="wd-points">Points</Form.Label>
+          </Row>
+          <Row className="wd-row">
+            <Form.Label htmlFor="wd-group">Assignment Group </Form.Label>
+          </Row>
+          <Row className="wd-row">
+            <Form.Label htmlFor="wd-display-grade-as">Display Grade As </Form.Label>
+          </Row>
+          <Row className="wd-row">
+            <Form.Label htmlFor="wd-submission-type" className="me-1">Submission Type </Form.Label>
+          </Row>
+          <Row className="wd-row">
+
+          </Row>
+        </Col>
+
+
+        <Col xs="6" className="text-start ms-3">
+          <Row className="wd-row">
+            <Form.Control id="wd-points" className="w-50" value={100} />
+          </Row>
+          <Row className="wd-row">
+            <Form.Select id="wd-group" className="w-50">
               <option value="ASSIGNMENTS">ASSIGNMENTS</option>
-            </select>
-          </td>
-        </tr>
-        <br />
-        <tr>
-          <td align="right">
-            <label htmlFor="wd-display-grade-as">Display Grade As </label>
-          </td>
-          <td>
-            <select id="wd-display-grade-as">
+            </Form.Select>
+          </Row>
+          <Row className="wd-row">
+            <Form.Select id="wd-display-grade-as" className="w-50">
               <option value="PERCENTAGE">Percentage</option>
-            </select>
-          </td>
-        </tr>
-        <br />
-        <tr>
-          <td align="right">
-            <label htmlFor="wd-submission-type">Submission Type </label>
-          </td>
-          <td>
-            <select id="wd-submission-type">
-              <option value="ONLINE">Online</option>
-            </select>
-          </td>
-        </tr>
-        <br />
-        <tr>
-          <td></td>
-          <td>
-            <td>
-              <label>Online Entry Options</label> <br />
-              <input type="checkbox" name="wd-submission-type" id="wd-text-entry" />
-              <label htmlFor="wd-text-entry">Text Entry</label> <br />
+            </Form.Select>
+          </Row>
+          <div className="ms-0 w-50">
+            <Row className="wd-row">
 
-              <input type="checkbox" name="wd-submission-type" id="wd-website-url" />
-              <label htmlFor="wd-website-url">Website URL</label> <br />
+              <Form.Select id="wd-submission-type" className="w-50 ms-2">
+                <option value="ONLINE">Online</option>
+              </Form.Select>
 
-              <input type="checkbox" name="wd-submission-type" id="wd-media-recordings" />
-              <label htmlFor="wd-media-recordings">Media Recordings</label> <br />
+            </Row>
+            <Row className="wd-row-small">
+              <Form.Label className="wd-bold">Online Entry Options</Form.Label>
+            </Row>
+            <Row className="wd-row-small flex-nowrap">
+              <Form.Check type="checkbox" name="wd-submission-type" id="wd-text-entry" className="w-auto" />
+              <Form.Label htmlFor="wd-text-entry" >Text Entry</Form.Label>
+            </Row>
+            <Row className="wd-row-small flex-nowrap">
+              <Form.Check type="checkbox" name="wd-submission-type" id="wd-website-url" className="w-auto" />
+              <Form.Label htmlFor="wd-website-url" className="me-2">Website URL</Form.Label>
+            </Row>
+            <Row className="wd-row-small flex-nowrap">
+              <Form.Check type="checkbox" name="wd-submission-type" id="wd-media-recordings" className="w-auto" />
+              <Form.Label htmlFor="wd-media-recordings" className="me-2">Media Recordings</Form.Label>
+            </Row>
+            <Row className="wd-row-small flex-nowrap">
+              <Form.Check type="checkbox" name="wd-submission-type" id="wd-student-annotation" className="w-auto" />
+              <Form.Label htmlFor="wd-student-annotation" className="me-2">Student Annotation</Form.Label>
+            </Row>
+            <Row className="wd-row-small flex-nowrap">
+              <Form.Check type="checkbox" name="wd-submission-type" id="wd-file-upload" className="w-auto" />
+              <Form.Label htmlFor="wd-file-upload" className="me-2">File Uploads</Form.Label>
+            </Row>
+          </div>
 
-              <input type="checkbox" name="wd-submission-type" id="wd-student-annotation" />
-              <label htmlFor="wd-student-annotation">Student Annotation</label> <br />
+        </Col>
+      </Col>
 
-              <input type="checkbox" name="wd-submission-type" id="wd-file-upload" />
-              <label htmlFor="wd-file-upload">File Uploads</label> <br /> <br />
-            </td>
-          </td>
-        </tr>
-        <tr>
-          <td align="right" valign="top">
-            <label htmlFor="wd-assign-to">Assign </label>
-          </td>
-          <td>
-            <label htmlFor="wd-assign-to">Assign to </label> <br />
-            <input id="wd-assign-to" value={"Everyone"} />
-          </td>
-        </tr>
-        <br />
-        <tr>
-          <td></td>
-          <td>
-            <label htmlFor="wd-due-date">Due</label> <br />
-            <input type="date" value="2024-05-13" id="wd-due-date" /><br />
-          </td>
-        </tr>
-        <br />
-        <tr>
-          <td></td>
-          <table>
-            <tr>
-              <td>
-                <label htmlFor="wd-available-from">Available From </label>
-              </td>
-              <td>
-                <label htmlFor="wd-available-until">Until</label>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <input type="date" value="2024-05-06" id="wd-available-from" />
-              </td>
-              <td>
-                <input type="date" value="2024-05-20" id="wd-available-until" /><br />
-              </td>
-            </tr>
-          </table>
-        </tr>
-        <tr>
-          <td colSpan={2}>
-            <hr />
-          </td>
-        </tr>
-        <tr>
-          <td></td>
-          <td align="right">
-            <button type="button" id="wd-editor-cancel">Cancel</button>
-            <button type="button" id="wd-editor-save">Save</button>
-          </td>
-        </tr>
-      </table>
+      <div className="mt-3">
+        <Col className="d-flex">
+          <Col xs="3" className="text-end">
+            <Row className="wd-row-small">
+              <Form.Label htmlFor="wd-points">Assign</Form.Label>
+            </Row>
+          </Col>
+          <Col xs="6" className="text-start ms-3">
+            <div className="border wd-assignment-dates-container">
+              <Row className="wd-row-small wd-slight-right">
+                <Form.Label htmlFor="wd-assign-to" className="wd-bold">Assign to </Form.Label> <br />
+              </Row>
+              <Row className="wd-row ms-1">
+                <Form.Control id="wd-assign-to" value={"Everyone"} className="w-auto" />
+              </Row>
+              <Row className="wd-row-small ms-1">
+                <Form.Label htmlFor="wd-due-date" className="wd-bold">Due</Form.Label>
+              </Row>
+              <Row className="wd-row-small ms-1">
+                <Form.Control type="date" value="2024-05-13" id="wd-due-date" className="w-auto" />
+              </Row>
+              <Row className="wd-row-small wd-slight-right mt-4 flex-nowrap">
+                <Form.Label htmlFor="wd-available-from" className="wd-bold w-auto ms-1 me-4">Available From </Form.Label>
+                <Form.Label htmlFor="wd-available-until" className="wd-bold w-auto wd-slight-right">Until</Form.Label>
+              </Row>
+              <Row className="wd-row-small flex-no-wrap">
+                <Form.Control type="date" value="2024-05-06" id="wd-available-from" className="w-auto ms-3 me-3"/>
+                <Form.Control type="date" value="2024-05-20" id="wd-available-until" className="w-auto"/>
+              </Row>
 
+            </div>
+          </Col>
+        </Col>
 
-    </div>
+      </div>
+
+      <hr/>
+      <div className="text-end">
+      <Button type="button" id="wd-editor-cancel">Cancel</Button>
+      <button type="button" id="wd-editor-save">Save</button>
+      </div>
+    </div >
+
 
 
   );
