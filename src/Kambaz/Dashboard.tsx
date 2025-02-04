@@ -16,7 +16,7 @@ export default function Dashboard() {
                 <Card.Body>
                   <Card.Title className="wd-dashboard-course-title">CS1234 React JS</Card.Title>
                   <Card.Text>Full Stack software developer</Card.Text>
-                  <Button variant="primary">Go</Button>
+                  <Button variant="primary" className="wd-go-button">Go</Button>
                 </Card.Body>
               </Link>
             </Card>
@@ -30,7 +30,7 @@ export default function Dashboard() {
                 <Card.Body>
                   <Card.Title className="wd-dashboard-course-title">ASTR1111 Intro to Astronomy</Card.Title>
                   <Card.Text>Discover the universe</Card.Text>
-                  <Button variant="primary">Go</Button>
+                  <Button variant="primary" className="wd-go-button">Go</Button>
                 </Card.Body>
               </Link>
             </Card>
@@ -44,7 +44,7 @@ export default function Dashboard() {
                 <Card.Body>
                   <Card.Title className="wd-dashboard-course-title">SCI1000 Chemistry</Card.Title>
                   <Card.Text>Create solutions</Card.Text>
-                  <Button variant="primary">Go</Button>
+                  <Button variant="primary" className="wd-go-button">Go</Button>
                 </Card.Body>
               </Link>
             </Card>
@@ -58,7 +58,7 @@ export default function Dashboard() {
                 <Card.Body>
                   <Card.Title className="wd-dashboard-course-title">CS6000 Cloud Computing</Card.Title>
                   <Card.Text>Compute the clouds</Card.Text>
-                  <Button variant="primary">Go</Button>
+                  <Button variant="primary" className="wd-go-button">Go</Button>
                 </Card.Body>
               </Link>
             </Card>
@@ -72,7 +72,7 @@ export default function Dashboard() {
                 <Card.Body>
                   <Card.Title className="wd-dashboard-course-title">ART2000 Color Theory</Card.Title>
                   <Card.Text>Unlock color</Card.Text>
-                  <Button variant="primary">Go</Button>
+                  <Button variant="primary" className="wd-go-button">Go</Button>
                 </Card.Body>
               </Link>
             </Card>
@@ -86,7 +86,7 @@ export default function Dashboard() {
                 <Card.Body>
                   <Card.Title className="wd-dashboard-course-title">CS3500 Object-Oriented Design</Card.Title>
                   <Card.Text>Design objects</Card.Text>
-                  <Button variant="primary">Go</Button>
+                  <Button variant="primary" className="wd-go-button">Go</Button>
                 </Card.Body>
               </Link>
             </Card>
@@ -100,7 +100,7 @@ export default function Dashboard() {
                 <Card.Body>
                   <Card.Title className="wd-dashboard-course-title">MATH2500 Probability and Statistics</Card.Title>
                   <Card.Text>Probably statistics</Card.Text>
-                  <Button variant="primary">Go</Button>
+                  <Button variant="primary" className="wd-go-button">Go</Button>
                 </Card.Body>
               </Link>
             </Card>
@@ -114,7 +114,7 @@ export default function Dashboard() {
                 <Card.Body>
                   <Card.Title className="wd-dashboard-course-title">ENGW3302 Advanced Writing</Card.Title>
                   <Card.Text>Write</Card.Text>
-                  <Button variant="primary">Go</Button>
+                  <Button variant="primary" className="wd-go-button">Go</Button>
                 </Card.Body>
               </Link>
             </Card>

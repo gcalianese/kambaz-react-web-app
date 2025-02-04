@@ -37,3 +37,37 @@ body * {
 .wd-lesson {
     border-left: 3px solid green !important;
 }
+
+.card {
+    position: relative;
+    min-height: 320px;
+}
+
+.card .wd-go-button {
+    position: absolute;
+    bottom: 12px;
+}
+
+.wd-assignment-percentage {
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid gray;
+    ;
+    border-radius: 20px;
+    padding: 6px 12px;
+}
+
+.wd-assignment-name {
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.wd-assignment-description {
+    padding-left: 25px;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.wd-assignment-icon {
+    color: green;
+}
