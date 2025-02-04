@@ -129,7 +129,7 @@ body * {
     color: black;
 }
 
-.btn-sign-out {
+.btn-sign-out, .btn-save {
     --bs-btn-color: white !important;
     --bs-btn-bg: red !important;
     --bs-btn-border-color: red !important;
@@ -174,4 +174,11 @@ body * {
     height: 230px;
     min-width: 300px;
     max-width: 400px;
+}
+
+.wd-submission-type-container {
+    height: 215px;
+    min-width: 300px;
+    max-width: 400px;
+    transform: translateX(-4px);
 }

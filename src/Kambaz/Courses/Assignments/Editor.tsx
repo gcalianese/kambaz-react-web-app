@@ -7,7 +7,7 @@ export default function AssignmentEditor() {
       <label htmlFor="wd-name" className="mb-3"><span className="wd-bold">Assignment Name</span></label>
 
       <div className="wd-textarea-container">
-        <Form.Control id="wd-name" value="A1 - ENV + HTML" className="mb-3" />
+        <Form.Control id="wd-name" defaultValue="A1 - ENV + HTML" className="mb-3" />
         <Form.Control as="textarea" id="wd-description" className="mb-5 textarea">
           The assignment is available online Submit a link to the landing page of your Web application running on Netlify.
           The landing page should include the following: Your full name and section Links to each of the lab assignments Link to the Kanbas application
@@ -38,7 +38,7 @@ export default function AssignmentEditor() {
 
         <Col xs="6" className="text-start ms-3">
           <Row className="wd-row">
-            <Form.Control id="wd-points" className="w-50" value={100} />
+            <Form.Control id="wd-points" className="w-50" defaultValue={100} />
           </Row>
           <Row className="wd-row">
             <Form.Select id="wd-group" className="w-50">
@@ -50,9 +50,8 @@ export default function AssignmentEditor() {
               <option value="PERCENTAGE">Percentage</option>
             </Form.Select>
           </Row>
-          <div className="ms-0 w-50">
+          <div className="border wd-submission-type-container">
             <Row className="wd-row">
-
               <Form.Select id="wd-submission-type" className="w-50 ms-2">
                 <option value="ONLINE">Online</option>
               </Form.Select>
@@ -96,24 +95,24 @@ export default function AssignmentEditor() {
           <Col xs="6" className="text-start ms-3">
             <div className="border wd-assignment-dates-container">
               <Row className="wd-row-small wd-slight-right">
-                <Form.Label htmlFor="wd-assign-to" className="wd-bold">Assign to </Form.Label> <br />
+                <Form.Label htmlFor="wd-assign-to" className="wd-bold">Assign to </Form.Label>
               </Row>
               <Row className="wd-row ms-1">
-                <Form.Control id="wd-assign-to" value={"Everyone"} className="w-auto" />
+                <Form.Control id="wd-assign-to" defaultValue={"Everyone"} className="w-auto" />
               </Row>
               <Row className="wd-row-small ms-1">
                 <Form.Label htmlFor="wd-due-date" className="wd-bold">Due</Form.Label>
               </Row>
               <Row className="wd-row-small ms-1">
-                <Form.Control type="date" value="2024-05-13" id="wd-due-date" className="w-auto" />
+                <Form.Control type="date" defaultValue="2024-05-13" id="wd-due-date" className="w-auto" />
               </Row>
               <Row className="wd-row-small wd-slight-right mt-4 flex-nowrap">
                 <Form.Label htmlFor="wd-available-from" className="wd-bold w-auto ms-1 me-4">Available From </Form.Label>
                 <Form.Label htmlFor="wd-available-until" className="wd-bold w-auto wd-slight-right">Until</Form.Label>
               </Row>
               <Row className="wd-row-small flex-no-wrap">
-                <Form.Control type="date" value="2024-05-06" id="wd-available-from" className="w-auto ms-3 me-3"/>
-                <Form.Control type="date" value="2024-05-20" id="wd-available-until" className="w-auto"/>
+                <Form.Control type="date" defaultValue="2024-05-06" id="wd-available-from" className="w-auto ms-3 me-3" />
+                <Form.Control type="date" defaultValue="2024-05-20" id="wd-available-until" className="w-auto" />
               </Row>
 
             </div>
@@ -122,10 +121,10 @@ export default function AssignmentEditor() {
 
       </div>
 
-      <hr/>
+      <hr />
       <div className="text-end">
-      <Button type="button" id="wd-editor-cancel">Cancel</Button>
-      <button type="button" id="wd-editor-save">Save</button>
+        <Button type="button" id="wd-editor-cancel" className="btn-secondary">Cancel</Button>
+        <Button type="button" id="wd-editor-save" className="btn-save">Save</Button>
       </div>
     </div >
 
