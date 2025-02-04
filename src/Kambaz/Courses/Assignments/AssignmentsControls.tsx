@@ -4,7 +4,7 @@ import { MdDoNotDisturbAlt } from "react-icons/md";
 
 export default function AssignmentsControls() {
     return (
-        <div id="wd-modules-controls" className="text-nowrap">
+        <div id="wd-assignment-controls" className="text-nowrap">
             <Button variant="danger" size="lg" className="me-1 float-end">
                 + Assignment
             </Button>
