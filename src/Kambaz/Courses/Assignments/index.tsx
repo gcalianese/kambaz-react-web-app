@@ -1,6 +1,5 @@
 import { ListGroup } from "react-bootstrap";
 import AssignmentsControls from "./AssignmentsControls";
-import ModuleControlButtons from "../Modules/ModuleControlButtons";
 import LessonControlButtons from "../Modules/LessonControlButtons";
 import { BsGripVertical } from "react-icons/bs";
 import AssignmentsControlButtons from "./AssignmentsControlButtons"
@@ -10,15 +9,13 @@ import { LuNotebookPen } from "react-icons/lu";
 export default function Assignments() {
   return (
     <div id="wd-assignments">
-      <div className="wd-assignments-controls-container">
+      <div className="wd-assignments-controls-container mb-5">
         <span className="wd-search-icon">
           <HiMagnifyingGlass />
         </span>
         <input placeholder="Search..." id="wd-search-assignment" />
         <span className="float-end"><AssignmentsControls /></span>
       </div>
-
-
 
       <div>
 

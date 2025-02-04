@@ -1,15 +1,14 @@
+import { Button } from "react-bootstrap";
 import { FaPlus } from "react-icons/fa6";
-import { Button, Dropdown } from "react-bootstrap";
-import { MdDoNotDisturbAlt } from "react-icons/md";
 
 export default function AssignmentsControls() {
     return (
         <div id="wd-assignment-controls" className="text-nowrap">
             <Button variant="danger" size="lg" className="me-1 float-end">
-                + Assignment
+                <FaPlus /> Assignment
             </Button>
             <Button variant="secondary" size="lg" className="me-1 float-end">
-                + Group
+                <FaPlus /> Group
             </Button>
         </div>
     );
