@@ -4,7 +4,7 @@ import { HiOutlineX } from "react-icons/hi";
 
 export default function AssignmentEditor() {
   return (
-    <div id="wd-assignments-editor d-flex">
+    <Form.Group id="wd-assignments-editor d-flex">
       <label htmlFor="wd-name" className="mb-3"><span className="wd-bold">Assignment Name</span></label>
 
       <div className="wd-textarea-container">
@@ -139,7 +139,7 @@ export default function AssignmentEditor() {
         <Button type="button" id="wd-editor-cancel" className="btn-secondary">Cancel</Button>
         <Button type="button" id="wd-editor-save" className="btn-save">Save</Button>
       </div>
-    </div >
+    </Form.Group >
 
 
 
