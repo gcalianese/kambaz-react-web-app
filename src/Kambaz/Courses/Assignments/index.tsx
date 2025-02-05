@@ -45,7 +45,7 @@ export default function Assignments() {
                   <LuNotebookPen className="wd-assignment-icon" />
                 </span>
                 <div className="wd-assignment-text flex-grow-1">
-                  <a href="#/Kambaz/Courses/1234/Assignments/123" className="wd-assignment-name">A2 CSS + BOOTSTRAP</a>
+                  <a href="#/Kambaz/Courses/1234/Assignments/123" className="wd-assignment-name">A2 - CSS + BOOTSTRAP</a>
                   <label className="wd-assignment-description">
                     <span className="text-danger"> Multiple Modules </span> | <span className="wd-bold">
                       Not available until

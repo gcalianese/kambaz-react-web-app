@@ -43,18 +43,25 @@ export default function AssignmentEditor() {
           </Row>
           <Row className="wd-row">
             <Form.Select id="wd-group" className="w-50">
-              <option value="ASSIGNMENTS">ASSIGNMENTS</option>
+              <option value="ASSIGNMENTS">Assignments</option>
+              <option value="QUIZZES">Quizzes</option>
+              <option value="EXAMS">Exams</option>
+              <option value="PROJECTS">Projects</option>
             </Form.Select>
           </Row>
           <Row className="wd-row">
             <Form.Select id="wd-display-grade-as" className="w-50">
               <option value="PERCENTAGE">Percentage</option>
+              <option value="POINTS">Points</option>
+              <option value="COMPLETE/INCOMPLETE">Complete/Incomplete</option>
             </Form.Select>
           </Row>
           <div className="border wd-submission-type-container">
             <Row className="wd-row">
               <Form.Select id="wd-submission-type" className="w-50 ms-2">
                 <option value="ONLINE">Online</option>
+                <option value="NO-SUBMISSION">No Submission</option>
+                <option value="IN-PERSON">In-Person</option>
               </Form.Select>
 
             </Row>
