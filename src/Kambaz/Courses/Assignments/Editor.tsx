@@ -1,4 +1,5 @@
 import { Form, Row, Col, Button } from "react-bootstrap";
+import { HiOutlineX } from "react-icons/hi";
 
 
 export default function AssignmentEditor() {
@@ -98,7 +99,12 @@ export default function AssignmentEditor() {
                 <Form.Label htmlFor="wd-assign-to" className="wd-bold">Assign to </Form.Label>
               </Row>
               <Row className="wd-row ms-1">
-                <Form.Control id="wd-assign-to" defaultValue={"Everyone"} className="w-auto" />
+                <div className="border wd-everyone-container">
+                  <div className="wd-everyone-tag-box border">
+                    <span className="wd-everyone-tag ms-1">Everyone</span>
+                    <HiOutlineX />
+                  </div>
+                </div>
               </Row>
               <Row className="wd-row-small wd-slight-right">
                 <Form.Label htmlFor="wd-due-date" className="wd-bold">Due</Form.Label>

@@ -187,3 +187,24 @@ body * {
 .wd-date-time {
     width: 180px !important;
 }
+
+.wd-everyone-container {
+    width: 180px !important;
+    height: 40px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.wd-everyone-tag-box {
+    width: 85px;
+    height: 25px;
+    background-color: lightgrey;
+    border-radius: 2px;
+    margin-left: 5px;;
+
+}
+
+.wd-everyone-tag {
+    font-size: 14px;
+}
