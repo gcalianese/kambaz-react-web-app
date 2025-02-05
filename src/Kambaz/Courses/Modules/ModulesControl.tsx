@@ -5,7 +5,7 @@ import { MdDoNotDisturbAlt } from "react-icons/md";
 
 export default function ModulesControls() {
     return (
-        <div id="wd-modules-controls" className="text-nowrap">
+        <div id="wd-modules-controls" className="text-nowrap d-flex flex-nowrap float-end">
             <Button variant="danger" size="lg" className="me-1 float-end" id="wd-add-module-btn">
                 <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
                 Module
