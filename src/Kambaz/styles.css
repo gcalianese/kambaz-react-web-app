@@ -42,6 +42,7 @@ body * {
 .card {
     position: relative;
     min-height: 320px;
+    width: 270px;
 }
 
 .card .wd-go-button {
@@ -181,4 +182,8 @@ body * {
     min-width: 300px;
     max-width: 400px;
     transform: translateX(-4px);
+}
+
+.wd-date-time {
+    width: 180px !important;
 }

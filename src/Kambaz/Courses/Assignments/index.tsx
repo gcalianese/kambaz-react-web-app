@@ -25,12 +25,12 @@ export default function Assignments() {
               <BsGripVertical className="me-2 fs-3 wd-assignment-drag" /> Assignments <AssignmentsControlButtons />
             </div>
             <ListGroup>
-              <ListGroup.Item className="wd-assignment p-3 ps-1 list-group-item rounded-0">
+              <ListGroup.Item className="wd-assignment p-3 ps-1 list-group-item rounded-0 d-flex align-items-center">
                 <span className="wd-assignment-icon-container">
                   <BsGripVertical className="me-2 fs-3 wd-assignment-drag" />
                   <LuNotebookPen className="wd-assignment-icon" />
                 </span>
-                <div className="wd-assignment-text">
+                <div className="wd-assignment-text flex-grow-1">
                   <a href="#/Kambaz/Courses/1234/Assignments/123" className="wd-assignment-name">A1 - ENV + HTML </a>
                   <label className="wd-assignment-description">
                     <span className="text-danger"> Multiple Modules </span> | <span className="wd-bold">
@@ -39,12 +39,12 @@ export default function Assignments() {
                 </div>
                 <LessonControlButtons />
               </ListGroup.Item>
-              <ListGroup.Item className="wd-assignment p-3 ps-1 list-group-item rounded-0">
+              <ListGroup.Item className="wd-assignment p-3 ps-1 list-group-item rounded-0 d-flex align-items-center">
                 <span className="wd-assignment-icon-container">
                   <BsGripVertical className="me-2 fs-3 wd-assignment-drag" />
                   <LuNotebookPen className="wd-assignment-icon" />
                 </span>
-                <div className="wd-assignment-text">
+                <div className="wd-assignment-text flex-grow-1">
                   <a href="#/Kambaz/Courses/1234/Assignments/123" className="wd-assignment-name">A2 CSS + BOOTSTRAP</a>
                   <label className="wd-assignment-description">
                     <span className="text-danger"> Multiple Modules </span> | <span className="wd-bold">
@@ -53,12 +53,12 @@ export default function Assignments() {
                 </div>
                 <LessonControlButtons />
               </ListGroup.Item>
-              <ListGroup.Item className="wd-assignment p-3 ps-1 list-group-item rounded-0">
+              <ListGroup.Item className="wd-assignment p-3 ps-1 list-group-item rounded-0 d-flex align-items-center">
                 <span className="wd-assignment-icon-container">
                   <BsGripVertical className="me-2 fs-3 wd-assignment-drag" />
                   <LuNotebookPen className="wd-assignment-icon" />
                 </span>
-                <div className="wd-assignment-text">
+                <div className="wd-assignment-text flex-grow-1">
                   <a href="#/Kambaz/Courses/1234/Assignments/123" className="wd-assignment-name">A3 - JAVASCRIPT + REACT</a>
                   <label className="wd-assignment-description">
                     <span className="text-danger"> Multiple Modules </span> | <span className="wd-bold">

@@ -100,19 +100,19 @@ export default function AssignmentEditor() {
               <Row className="wd-row ms-1">
                 <Form.Control id="wd-assign-to" defaultValue={"Everyone"} className="w-auto" />
               </Row>
-              <Row className="wd-row-small ms-1">
+              <Row className="wd-row-small wd-slight-right">
                 <Form.Label htmlFor="wd-due-date" className="wd-bold">Due</Form.Label>
               </Row>
               <Row className="wd-row-small ms-1">
-                <Form.Control type="date" defaultValue="2024-05-13" id="wd-due-date" className="w-auto" />
+                <Form.Control type="datetime-local" defaultValue="2024-05-13T23:59" id="wd-due-date" className="wd-date-time" />
               </Row>
               <Row className="wd-row-small wd-slight-right mt-4 flex-nowrap">
-                <Form.Label htmlFor="wd-available-from" className="wd-bold w-auto ms-1 me-4">Available From </Form.Label>
-                <Form.Label htmlFor="wd-available-until" className="wd-bold w-auto wd-slight-right">Until</Form.Label>
+                <Form.Label htmlFor="wd-available-from" className="wd-bold w-auto ms-1 me-5">Available From </Form.Label>
+                <Form.Label htmlFor="wd-available-until" className="wd-bold ms-3 w-auto wd-slight-right">Until</Form.Label>
               </Row>
-              <Row className="wd-row-small flex-no-wrap">
-                <Form.Control type="date" defaultValue="2024-05-06" id="wd-available-from" className="w-auto ms-3 me-3" />
-                <Form.Control type="date" defaultValue="2024-05-20" id="wd-available-until" className="w-auto" />
+              <Row className="wd-row-small flex-no-wrap align-items-center d-flex">
+                <Form.Control type="datetime-local" defaultValue="2024-05-06T00:00" id="wd-available-from" className="wd-date-time ms-3 me-3" />
+                <Form.Control type="datetime-local" defaultValue="2024-05-20T23:59" id="wd-available-until" className="wd-date-time" />
               </Row>
 
             </div>
