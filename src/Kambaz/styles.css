@@ -77,6 +77,8 @@ body * {
 .wd-assignment-icon {
     color: green;
     flex-direction: column;
+    vertical-align: middle;
+    position: relative;
 }
 
 .wd-assignment-text {
@@ -85,10 +87,23 @@ body * {
 }
 
 .wd-assignment-icon-container {
+    position: relative;
     vertical-align: middle;
     margin-right: 12px;
-    display: inline-block;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
 }
+
+.wd-lesson-icon-container {
+    position: relative;
+    vertical-align: middle;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    align-self: right;
+}
+
 
 .wd-bold {
     font-weight: bold;
@@ -208,3 +223,4 @@ body * {
 .wd-everyone-tag {
     font-size: 14px;
 }
+
