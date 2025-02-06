@@ -5,7 +5,7 @@ import { HiOutlineX } from "react-icons/hi";
 export default function AssignmentEditor() {
   return (
     <Form.Group id="wd-assignments-editor d-flex">
-      <label htmlFor="wd-name" className="mb-3"><span className="wd-bold">Assignment Name</span></label>
+      <Form.Label htmlFor="wd-name" className="mb-3"><span className="wd-bold">Assignment Name</span></Form.Label>
 
       <div className="wd-textarea-container">
         <Form.Control id="wd-name" defaultValue="A1 - ENV + HTML" className="mb-3" />
@@ -18,7 +18,7 @@ export default function AssignmentEditor() {
       </div>
 
       <Col className="d-flex">
-        <Col xs="3" className="text-end">
+        <Col xs="2" className="text-end">
           <Row className="wd-row">
             <Form.Label htmlFor="wd-points">Points</Form.Label>
           </Row>
@@ -37,12 +37,12 @@ export default function AssignmentEditor() {
         </Col>
 
 
-        <Col xs="6" className="text-start ms-3">
+        <Col xs="7" className="text-start ms-3">
           <Row className="wd-row">
-            <Form.Control id="wd-points" className="w-50" defaultValue={100} />
+            <Form.Control id="wd-points" className="wd-assignment-editor-dropdown" defaultValue={100} />
           </Row>
           <Row className="wd-row">
-            <Form.Select id="wd-group" className="w-50">
+            <Form.Select id="wd-group" className="wd-assignment-editor-dropdown">
               <option value="ASSIGNMENTS">Assignments</option>
               <option value="QUIZZES">Quizzes</option>
               <option value="EXAMS">Exams</option>
@@ -50,7 +50,7 @@ export default function AssignmentEditor() {
             </Form.Select>
           </Row>
           <Row className="wd-row">
-            <Form.Select id="wd-display-grade-as" className="w-50">
+            <Form.Select id="wd-display-grade-as" className="wd-assignment-editor-dropdown">
               <option value="PERCENTAGE">Percentage</option>
               <option value="POINTS">Points</option>
               <option value="COMPLETE/INCOMPLETE">Complete/Incomplete</option>
@@ -95,12 +95,12 @@ export default function AssignmentEditor() {
 
       <div className="mt-3">
         <Col className="d-flex">
-          <Col xs="3" className="text-end">
+          <Col xs="2" className="text-end">
             <Row className="wd-row-small">
               <Form.Label htmlFor="wd-points">Assign</Form.Label>
             </Row>
           </Col>
-          <Col xs="6" className="text-start ms-3">
+          <Col xs="7" className="text-start ms-3">
             <div className="border wd-assignment-dates-container">
               <Row className="wd-row-small wd-slight-right">
                 <Form.Label htmlFor="wd-assign-to" className="wd-bold">Assign to </Form.Label>
@@ -119,13 +119,29 @@ export default function AssignmentEditor() {
               <Row className="wd-row-small ms-1">
                 <Form.Control type="datetime-local" defaultValue="2024-05-13T23:59" id="wd-due-date" className="wd-date-time" />
               </Row>
-              <Row className="wd-row-small wd-slight-right mt-4 flex-nowrap">
-                <Form.Label htmlFor="wd-available-from" className="wd-bold w-auto ms-1 me-5">Available From </Form.Label>
-                <Form.Label htmlFor="wd-available-until" className="wd-bold ms-3 w-auto wd-slight-right">Until</Form.Label>
-              </Row>
-              <Row className="wd-row-small flex-no-wrap align-items-center d-flex">
-                <Form.Control type="datetime-local" defaultValue="2024-05-06T00:00" id="wd-available-from" className="wd-date-time ms-3 me-3" />
-                <Form.Control type="datetime-local" defaultValue="2024-05-20T23:59" id="wd-available-until" className="wd-date-time" />
+              <Row className="wd-row-small mt-4 g-2">
+                <Col xs={12} md={6} className="d-flex flex-column">
+                  <Form.Label htmlFor="wd-available-from" className="wd-bold">
+                    Available From
+                  </Form.Label>
+                  <Form.Control
+                    type="datetime-local"
+                    defaultValue="2024-05-06T00:00"
+                    id="wd-available-from"
+                    className="wd-date-time"
+                  />
+                </Col>
+                <Col xs={12} md={6} className="d-flex flex-column">
+                  <Form.Label htmlFor="wd-available-until" className="wd-bold">
+                    Until
+                  </Form.Label>
+                  <Form.Control
+                    type="datetime-local"
+                    defaultValue="2024-05-20T23:59"
+                    id="wd-available-until"
+                    className="wd-date-time"
+                  />
+                </Col>
               </Row>
 
             </div>

@@ -137,7 +137,7 @@ body * {
     text-decoration: none;
 }
 
-.wd-account-nav-link.active{
+.wd-account-nav-link.active {
     border-left: 3px solid black !important;
 }
 
@@ -145,7 +145,8 @@ body * {
     color: black;
 }
 
-.btn-sign-out, .btn-save {
+.btn-sign-out,
+.btn-save {
     --bs-btn-color: white !important;
     --bs-btn-bg: red !important;
     --bs-btn-border-color: red !important;
@@ -157,11 +158,11 @@ body * {
 .wd-textarea-container {
     min-height: 275px;
     max-height: 500px;
-    width: 550px;
+    max-width: 565px;
 }
 
 .textarea {
-    resize: both;
+    resize: vertical;
     height: 200px;
     width: 550px;
     min-height: 200px;
@@ -178,8 +179,8 @@ body * {
 }
 
 .wd-row-small {
-    height: 22px;
-    margin-bottom: 4px;
+    min-height: 22px;
+    margin-bottom: 2px;
 }
 
 .wd-slight-right {
@@ -187,20 +188,22 @@ body * {
 }
 
 .wd-assignment-dates-container {
-    height: 230px;
+    min-height: 230px;
     min-width: 300px;
-    max-width: 400px;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
 }
 
 .wd-submission-type-container {
-    height: 215px;
+    min-height: 215px;
     min-width: 300px;
-    max-width: 400px;
+    max-width: 350px;
     transform: translateX(-4px);
 }
 
 .wd-date-time {
-    width: 180px !important;
+    max-width: 150px !important;
 }
 
 .wd-everyone-container {
@@ -216,7 +219,8 @@ body * {
     height: 25px;
     background-color: lightgrey;
     border-radius: 2px;
-    margin-left: 5px;;
+    margin-left: 5px;
+    ;
 
 }
 
@@ -224,3 +228,6 @@ body * {
     font-size: 14px;
 }
 
+.wd-assignment-editor-dropdown {
+    max-width: 360px !important;
+}
