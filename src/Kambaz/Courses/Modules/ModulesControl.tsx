@@ -5,12 +5,10 @@ import { MdDoNotDisturbAlt } from "react-icons/md";
 
 export default function ModulesControls() {
     return (
-        <div id="wd-modules-controls" className="text-nowrap d-flex flex-nowrap float-end">
-            <Button variant="secondary" size="lg" className="me-1 float-end" id="wd-collapse-all">
-                Collapse All
-            </Button>
-            <Button variant="secondary" size="lg" className="me-1 float-end" id="wd-view-progress">
-                View Progress
+        <div id="wd-modules-controls" className="text-nowrap float-end">
+            <Button variant="danger" size="lg" className="me-1 float-end" id="wd-add-module-btn">
+                <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
+                Module
             </Button>
             <Dropdown className="float-end me-2">
                 <Dropdown.Toggle variant="secondary" size="lg" id="wd-publish-all-btn">
@@ -31,11 +29,12 @@ export default function ModulesControls() {
                     </Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
-            <Button variant="danger" size="lg" className="me-1 float-end" id="wd-add-module-btn">
-                <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
-                Module
+            <Button variant="secondary" size="lg" className="me-1 float-end" id="wd-view-progress">
+                View Progress
             </Button>
-
+            <Button variant="secondary" size="lg" className="me-1 float-end" id="wd-collapse-all">
+                Collapse All
+            </Button>
         </div>
     );
 }
