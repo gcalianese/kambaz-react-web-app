@@ -119,7 +119,7 @@ export default function AssignmentEditor() {
               <Row className="wd-row-small ms-1">
                 <Form.Control type="datetime-local" defaultValue="2024-05-13T23:59" id="wd-due-date" className="wd-date-time" />
               </Row>
-              <Row className="wd-row-small mt-4 g-2">
+              <Row className="wd-row-small mt-1 g-2">
                 <Col xs={12} md={6} className="d-flex flex-column">
                   <Form.Label htmlFor="wd-available-from" className="wd-bold">
                     Available From
