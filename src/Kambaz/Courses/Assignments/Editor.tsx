@@ -97,7 +97,7 @@ export default function AssignmentEditor() {
         <Col className="d-flex">
           <Col xs="2" className="text-end">
             <Row className="wd-row-small">
-              <Form.Label htmlFor="wd-points">Assign</Form.Label>
+              <Form.Label>Assign</Form.Label>
             </Row>
           </Col>
           <Col xs="7" className="text-start ms-3">
