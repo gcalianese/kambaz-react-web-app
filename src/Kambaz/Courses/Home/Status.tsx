@@ -11,6 +11,14 @@ import { VscMegaphone } from "react-icons/vsc";
 
 
 export default function CourseStatus() {
+  const buttons = [{ label: "Import Existing Content", icon: BiImport },
+    {label:"Import from Commons", icon: LiaFileImportSolid},
+    {label: "Choose Home Page", icon: PiHouseLineFill},
+    {label: "View Course Stream", icon: TiChartBar},
+    {label: "New Announcement", icon: VscMegaphone},
+    {label: "New Analytics", icon: TiChartBar},
+    {label: "View Course Notifications", icon: FaBell }
+  ];
   return (
     <div id="wd-course-status" style={{ width: "350px" }}>
       <h2>Course Status</h2>
@@ -23,19 +31,10 @@ export default function CourseStatus() {
             <FaCheckCircle className="me-2 fs-5" /> Publish </Button> </div>
       </div>
       <br />
-      <Button variant="secondary" size="lg" className="w-100 mt-1 text-start">
-        <BiImport className="me-2 fs-5" /> Import Existing Content </Button>
-      <Button variant="secondary" size="lg" className="w-100 mt-1 text-start">
-        <LiaFileImportSolid className="me-2 fs-5" /> Import from Commons </Button>
-      <Button variant="secondary" size="lg" className="w-100 mt-1 text-start">
-        <PiHouseLineFill className="me-2 fs-5" /> Choose Home Page </Button>
-      <Button variant="secondary" size="lg" className="w-100 mt-1 text-start">
-        <TiChartBar className="me-2 fs-5" /> View Course Stream </Button>
-      <Button variant="secondary" size="lg" className="w-100 mt-1 text-start">
-        <VscMegaphone className="me-2 fs-5" /> New Announcement </Button>
-      <Button variant="secondary" size="lg" className="w-100 mt-1 text-start">
-        <TiChartBar className="me-2 fs-5" /> New Analytics </Button>
-      <Button variant="secondary" size="lg" className="w-100 mt-1 text-start">
-        <FaBell className="me-2 fs-5" /> View Course Notifications </Button>
+      {buttons.map((button) => (
+        <Button variant="secondary" size="lg" className="w-100 mt-1 text-start">
+          <button.icon className="me-2 fs-5" />{button.label}
+        </Button>
+      ))}
     </div>);
 }

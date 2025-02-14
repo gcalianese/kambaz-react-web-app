@@ -17,7 +17,7 @@ export default function Dashboard() {
                   className="wd-dashboard-course-link text-decoration-none text-dark" >
                   <Card.Img variant="top" src={course.image} width="100%" height={160} /><br />
                   <div className="card-body">
-                    <h5 className="wd-dashboard-course-title card-title">
+                    <h5 className="wd-dashboard-course-title card-title overflow-hidden text-nowrap">
                       {course.name} </h5>
                     <p className="wd-dashboard-course-title card-text overflow-y-hidden" style={{ maxHeight: 100 }}>
                       {course.description} </p>
