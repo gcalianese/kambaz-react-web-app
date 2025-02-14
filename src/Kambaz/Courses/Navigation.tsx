@@ -16,7 +16,7 @@ export default function CourseNavigation() {
           key={link}
           to={`/Kambaz/Courses/${cid}/${link}`}
           id={`wd-${cid}-${link}-link`}
-          className={`border border-0 list-group-item ${pathname.includes(link) ? 'active' : 'text-danger'}`}
+          className={`list-group-item border border-0 ${pathname.includes(link) ? 'active' : 'text-danger'}`}
         >
           {link}
         </Link>
