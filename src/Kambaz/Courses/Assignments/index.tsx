@@ -40,11 +40,11 @@ export default function Assignments() {
                       <LuNotebookPen className="wd-assignment-icon" />
                     </span>
                     <div className="wd-assignment-text flex-grow-1">
-                      <a href="#/Kambaz/Courses/1234/Assignments/123" className="wd-assignment-name">{assignment.title}</a>
+                      <a href={`#/Kambaz/Courses/${cid}/Assignments/${assignment._id}`} className="wd-assignment-name">{assignment.title}</a>
                       <label className="wd-assignment-description">
                         <span className="text-danger"> Multiple Modules </span> | <span className="wd-bold">
                           Not available until
-                        </span> {assignment.available} | <span className="wd-bold"> Due </span> {assignment.due} | 100 pts</label>
+                        </span> {assignment.available} | <span className="wd-bold"> Due </span> {assignment.due} | {assignment.points} pts</label>
                     </div>
                     <LessonControlButtons />
                   </ListGroup.Item>

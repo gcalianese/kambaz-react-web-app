@@ -1,19 +1,26 @@
 import { Form, Row, Col, Button } from "react-bootstrap";
 import { HiOutlineX } from "react-icons/hi";
-
+import * as db from "../../Database";
+import { useParams, Link } from "react-router";
 
 export default function AssignmentEditor() {
+  const assignments = db.assignments;
+  const { cid, aid } = useParams();
+  const assignment = assignments.find((assignment) => (assignment._id === aid && assignment.course === cid))
+
+  if (!assignment) {
+    return <h2>Assignment not found</h2>;
+  }
+
   return (
+
     <Form.Group id="wd-assignments-editor d-flex">
       <Form.Label htmlFor="wd-name" className="mb-3"><span className="wd-bold">Assignment Name</span></Form.Label>
 
       <div className="wd-textarea-container">
-        <Form.Control id="wd-name" defaultValue="A1 - ENV + HTML" className="mb-3" />
+        <Form.Control id="wd-name" defaultValue={assignment.title} className="mb-3" />
         <Form.Control as="textarea" id="wd-description" className="mb-5 textarea">
-          The assignment is available online Submit a link to the landing page of your Web application running on Netlify.
-          The landing page should include the following: Your full name and section Links to each of the lab assignments Link to the Kanbas application
-          Links to all relevant source code repositories
-          The Kanbas application should include a link to navigate back to the landing page.
+          {assignment.description}
         </Form.Control>
       </div>
 
@@ -39,7 +46,7 @@ export default function AssignmentEditor() {
 
         <Col xs="7" className="text-start ms-3">
           <Row className="wd-row">
-            <Form.Control id="wd-points" className="wd-assignment-editor-dropdown" defaultValue={100} />
+            <Form.Control id="wd-points" className="wd-assignment-editor-dropdown" defaultValue={assignment.points} />
           </Row>
           <Row className="wd-row">
             <Form.Select id="wd-group" className="wd-assignment-editor-dropdown">
@@ -117,7 +124,7 @@ export default function AssignmentEditor() {
                 <Form.Label htmlFor="wd-due-date" className="wd-bold">Due</Form.Label>
               </Row>
               <Row className="wd-row-small ms-1">
-                <Form.Control type="datetime-local" defaultValue="2024-05-13T23:59" id="wd-due-date" className="wd-date-time" />
+                <Form.Control type="datetime-local" defaultValue={assignment.due_dt} id="wd-due-date" className="wd-date-time" />
               </Row>
               <Row className="wd-row-small mt-1 g-2">
                 <Col xs={12} md={6} className="d-flex flex-column">
@@ -126,7 +133,7 @@ export default function AssignmentEditor() {
                   </Form.Label>
                   <Form.Control
                     type="datetime-local"
-                    defaultValue="2024-05-06T00:00"
+                    defaultValue={assignment.available_dt}
                     id="wd-available-from"
                     className="wd-date-time"
                   />
@@ -137,7 +144,7 @@ export default function AssignmentEditor() {
                   </Form.Label>
                   <Form.Control
                     type="datetime-local"
-                    defaultValue="2024-05-20T23:59"
+                    defaultValue={assignment.until_dt}
                     id="wd-available-until"
                     className="wd-date-time"
                   />
@@ -150,14 +157,22 @@ export default function AssignmentEditor() {
 
       </div>
 
+
+
       <hr />
       <div className="text-end">
-        <Button type="button" id="wd-editor-cancel" className="btn-secondary">Cancel</Button>
-        <Button type="button" id="wd-editor-save" className="btn-save">Save</Button>
+        <Link to={`/Kambaz/Courses/${cid}/Assignments/`}>
+          <Button type="button" id="wd-editor-cancel" className="btn-secondary">Cancel</Button>
+        </Link>
+        <Link to={`/Kambaz/Courses/${cid}/Assignments/`}>
+          <Button type="button" id="wd-editor-save" className="btn-save">Save</Button>
+        </Link>
       </div>
+
     </Form.Group >
 
 
 
   );
+
 }
