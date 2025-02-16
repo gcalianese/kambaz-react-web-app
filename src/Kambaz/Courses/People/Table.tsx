@@ -6,9 +6,6 @@ import * as db from "../../Database";
 export default function PeopleTable() {
     const { cid } = useParams();
     const { users, enrollments } = db;
-    const courseEnrollments = enrollments.filter((enrollee: any) => enrollee.course === cid);
-    const enrolledUserIds = courseEnrollments.map((enrollee: any) => enrollee.user);
-    const courseMembers = users.filter((user: any) => enrolledUserIds.includes(user._id));
 
     return (
         <div id="wd-people-table">
@@ -17,19 +14,24 @@ export default function PeopleTable() {
                     <tr><th>Name</th><th>Login ID</th><th>Section</th><th>Role</th><th>Last Activity</th><th>Total Activity</th></tr>
                 </thead>
                 <tbody>
-                    {courseMembers.map((member: any) => (
-                        <tr>
-                            <td className="wd-full-name text-nowrap">
-                                <FaUserCircle className="me-2 fs-1 text-secondary" />
-                                <span className="wd-first-name">{member.firstName}</span>{" "}
-                                <span className="wd-last-name">{member.lastName}</span></td>
-                            <td className="wd-login-id">{member.loginId}</td>
-                            <td className="wd-section">{member.section}</td>
-                            <td className="wd-role">{member.role}</td>
-                            <td className="wd-last-activity">{member.lastActivity}</td>
-                            <td className="wd-total-activity">{member.totalActivity}</td>
-                        </tr>
-                    ))}
+                    {users
+                        .filter((usr) =>
+                            enrollments.some((enrollment) => enrollment.user === usr._id && enrollment.course === cid)
+                        )
+                        .map((user: any) => (
+                            <tr key={user._id}>
+                                <td className="wd-full-name text-nowrap">
+                                    <FaUserCircle className="me-2 fs-1 text-secondary" />
+                                    <span className="wd-first-name">{user.firstName}{" "}</span>
+                                    <span className="wd-last-name">{user.lastName}</span>
+                                </td>
+                                <td className="wd-login-id">{user.loginId}</td>
+                                <td className="wd-section">{user.section}</td>
+                                <td className="wd-role">{user.role}</td>
+                                <td className="wd-last-activity">{user.lastActivity}</td>
+                                <td className="wd-total-activity">{user.totalActivity}</td>
+                            </tr>
+                        ))}
                 </tbody>
             </Table>
         </div>);
