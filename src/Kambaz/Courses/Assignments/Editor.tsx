@@ -161,10 +161,10 @@ export default function AssignmentEditor() {
 
       <hr />
       <div className="text-end">
-        <Link to={`/Kambaz/Courses/${cid}/Assignments/`}>
+        <Link to={`/Kambaz/Courses/${cid}/Assignments`}>
           <Button type="button" id="wd-editor-cancel" className="btn-secondary">Cancel</Button>
         </Link>
-        <Link to={`/Kambaz/Courses/${cid}/Assignments/`}>
+        <Link to={`/Kambaz/Courses/${cid}/Assignments`}>
           <Button type="button" id="wd-editor-save" className="btn-save">Save</Button>
         </Link>
       </div>
