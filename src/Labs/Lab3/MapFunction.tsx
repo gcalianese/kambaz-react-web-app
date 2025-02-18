@@ -4,6 +4,7 @@ export default function MapFunction() {
     const todos = ["Buy milk", "Feed the pets"];
     const squares = numberArray1.map(square);
     const cubes = numberArray1.map((a) => a * a * a);
+    let count = 0;
     return (
         <div id="wd-map-function">
             <h4>Map Function</h4>
@@ -12,7 +13,7 @@ export default function MapFunction() {
             Todos:
             <ol>
                 {todos.map((todo) => (
-                    <li>{todo}</li>
+                    <li key={count++}>{todo}</li>
                 ))}
             </ol> <hr />
         </div>

@@ -3,7 +3,7 @@ const TodoItem = ({ todo = {
     status: 'COMPLETED'
 } }) => {
     return (
-        <li className="list-group-item">
+        <li key={todo.title} className="list-group-item">
             <input type="checkbox" className="me-2"
                 defaultChecked={todo.done} />
             {todo.title} ({todo.status})
