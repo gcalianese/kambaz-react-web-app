@@ -13,7 +13,7 @@ export default function TodoForm(
             <div className="d-flex justify-content-between align-items-center">
                 <FormControl
                     className="flex-grow-1"
-                    defaultValue={todo.title}
+                    value={todo.title}
                     onChange={(e) => dispatch(setTodo({ ...todo, title: e.target.value }))} />
                 <Button
                     onClick={() => dispatch(updateTodo(todo))}
