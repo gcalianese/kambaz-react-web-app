@@ -8,6 +8,7 @@ export default function Home() {
       </div>
       <div className="d-none d-xl-block">
         <CourseStatus />
+        <h1>heading</h1>
       </div>
     </div>
   );

@@ -16,19 +16,33 @@ export default function Dashboard({ courses, course, setCourse, addNewCourse,
   return (
     <div id="wd-dashboard">
       <h1 id="wd-dashboard-title">Dashboard</h1> <hr />
-      <h5>New Course
-        <button className="btn btn-primary float-end"
-          id="wd-add-new-course-click"
-          onClick={addNewCourse} > Add </button>
-        <button className="btn btn-warning float-end me-2"
-          onClick={updateCourse} id="wd-update-course-click">
-          Update
-        </button>
-      </h5>
-      <br />
-      <FormControl value={course.name} className="mb-2" onChange={(e) => setCourse({ ...course, name: e.target.value })} />
-      <FormControl value={course.description} as="textarea" rows={1} onChange={(e) => setCourse({ ...course, description: e.target.value })} />
-      <hr />
+      {currentUser.role === "FACULTY" && (
+        <>
+          <h5>New Course
+            <button className="btn btn-primary float-end"
+              id="wd-add-new-course-click"
+              onClick={addNewCourse}> Add </button>
+            <button className="btn btn-warning float-end me-2"
+              onClick={updateCourse} id="wd-update-course-click">
+              Update
+            </button>
+          </h5>
+          <br />
+          <FormControl
+            value={course.name}
+            className="mb-2"
+            onChange={(e) => setCourse({ ...course, name: e.target.value })}
+          />
+          <FormControl
+            value={course.description}
+            as="textarea"
+            rows={1}
+            onChange={(e) => setCourse({ ...course, description: e.target.value })}
+          />
+             <hr />
+        </>
+      )}
+  
 
       <h2 id="wd-dashboard-published">Published Courses ({courses.length})</h2> <hr />
       <div id="wd-dashboard-courses">
