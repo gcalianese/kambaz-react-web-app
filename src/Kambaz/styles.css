@@ -41,13 +41,29 @@ body * {
 
 .card {
     position: relative;
-    min-height: 320px;
+    height: 320px !important;
     width: 270px;
 }
 
 .card .wd-go-button {
     position: absolute;
-    bottom: 12px;
+    bottom: 10px;
+}
+
+.card .wd-card-edit-button {
+    position: absolute;
+    bottom: 10px;
+    right: 80px; /* 10px from the right */
+    margin-right: 2px;
+
+}
+
+.card .wd-card-delete-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px; /* 10px from the right */
+    margin-right: 2px;
+
 }
 
 .wd-assignment-percentage {
