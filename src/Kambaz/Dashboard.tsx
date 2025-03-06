@@ -39,12 +39,21 @@ export default function Dashboard({ courses, course, setCourse, addNewCourse,
             rows={1}
             onChange={(e) => setCourse({ ...course, description: e.target.value })}
           />
-             <hr />
+          <hr />
         </>
       )}
-  
 
-      <h2 id="wd-dashboard-published">Published Courses ({courses.length})</h2> <hr />
+
+      <h2 id="wd-dashboard-published">Published Courses  ({
+        courses.filter((course) =>
+          enrollments.some(
+            (enrollment) =>
+              enrollment.user === currentUser._id &&
+              enrollment.course === course._id
+          )
+        ).length
+      })
+      </h2> <hr />
       <div id="wd-dashboard-courses">
         <Row xs={1} md={5} className="g-4">
           {courses.filter((course) =>
