@@ -1,36 +1,12 @@
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Row, Col, Card, FormControl } from "react-bootstrap";
-import * as db from "./Database";
-import { v4 as uuidv4 } from "uuid";
 
-export default function Dashboard() {
-  const [courses, setCourses] = useState<any[]>(db.courses);
-  const [course, setCourse] = useState<any>({
-    _id: "0", name: "New Course", number: "New Number",
-    startDate: "2023-09-10", endDate: "2023-12-15",
-    image: "/images/reactjs.jpg", description: "New Description"
-  });
-  const addNewCourse = () => {
-    const newCourse = { ...course, _id: uuidv4() };
-    setCourses([...courses, newCourse]);
-  };
-  const deleteCourse = (courseId: string) => {
-    setCourses(courses.filter((course) => course._id !== courseId));
-  };
-  const updateCourse = () => {
-    setCourses(
-      courses.map((c) => {
-        if (c._id === course._id) {
-          return course;
-        } else {
-          return c;
-        }
-      })
-    );
-  };
-
-
+export default function Dashboard({ courses, course, setCourse, addNewCourse,
+  deleteCourse, updateCourse }: {
+    courses: any[]; course: any; setCourse: (course: any) => void;
+    addNewCourse: () => void; deleteCourse: (course: any) => void;
+    updateCourse: () => void;
+  }) {
 
   return (
     <div id="wd-dashboard">
@@ -46,7 +22,7 @@ export default function Dashboard() {
       </h5>
       <br />
       <FormControl value={course.name} className="mb-2" onChange={(e) => setCourse({ ...course, name: e.target.value })} />
-      <FormControl value={course.description} rows={3} onChange={(e) => setCourse({ ...course, description: e.target.value })} />
+      <FormControl value={course.description} as="textarea" rows={1} onChange={(e) => setCourse({ ...course, description: e.target.value })} />
       <hr />
 
       <h2 id="wd-dashboard-published">Published Courses ({courses.length})</h2> <hr />
