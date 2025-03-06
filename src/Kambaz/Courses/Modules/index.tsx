@@ -17,13 +17,14 @@ export default function Modules() {
   const [moduleName, setModuleName] = useState("");
   const { modules } = useSelector((state: any) => state.modulesReducer);
   const dispatch = useDispatch();
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
 
   return (
     <div>
-      <ModulesControls setModuleName={setModuleName} moduleName={moduleName} addModule={() => {
+      { currentUser.role === "FACULTY" && <ModulesControls setModuleName={setModuleName} moduleName={moduleName} addModule={() => {
         dispatch(addModule({ name: moduleName, course: cid }));
         setModuleName("");
-      }} /><br /><br /><br /><br />
+      }} /> }<br /><br /><br /><br />
       <ul id="wd-modules" className="list-group rounded-0">
         {modules
           .filter((module: any) => module.course === cid)
@@ -42,11 +43,11 @@ export default function Modules() {
                     }}
                     defaultValue={module.name} />
                 )}
-                <ModuleControlButtons moduleId={module._id}
+                { currentUser.role === "FACULTY" && <ModuleControlButtons moduleId={module._id}
                   deleteModule={(moduleId) => {
                     dispatch(deleteModule(moduleId));
                   }}
-                  editModule={(moduleId) => dispatch(editModule(moduleId))} />              </div>
+                  editModule={(moduleId) => dispatch(editModule(moduleId))} />    }           </div>
               {module.lessons && (
                 <ul className="wd-lessons list-group rounded-0">
                   {module.lessons.map((lesson: any) => (
