@@ -1,12 +1,17 @@
 import { Link } from "react-router-dom";
 import { Row, Col, Card, FormControl } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import * as db from "./Database";
 
 export default function Dashboard({ courses, course, setCourse, addNewCourse,
   deleteCourse, updateCourse }: {
     courses: any[]; course: any; setCourse: (course: any) => void;
     addNewCourse: () => void; deleteCourse: (course: any) => void;
     updateCourse: () => void;
-  }) {
+  }
+) {
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
+  const { enrollments } = db;
 
   return (
     <div id="wd-dashboard">
@@ -28,39 +33,46 @@ export default function Dashboard({ courses, course, setCourse, addNewCourse,
       <h2 id="wd-dashboard-published">Published Courses ({courses.length})</h2> <hr />
       <div id="wd-dashboard-courses">
         <Row xs={1} md={5} className="g-4">
-          {courses.map((course) => (
-            <Col className="wd-dashboard-course" style={{ width: "300px" }}>
-              <Card>
-                <Link to={`/Kambaz/Courses/${course._id}/Home`}
-                  className="wd-dashboard-course-link text-decoration-none text-dark" >
-                  <Card.Img variant="top" src={course.image} width="100%" height={160} /><br />
-                  <div className="card-body">
-                    <h5 className="wd-dashboard-course-title card-title overflow-hidden text-nowrap">
-                      {course.name} </h5>
-                    <p className="wd-dashboard-course-title card-text overflow-y-hidden" style={{ maxHeight: 50 }}>
-                      {course.description} </p>
-                    <button className="btn btn-primary wd-go-button"> Go </button>
+          {courses.filter((course) =>
+            enrollments.some(
+              (enrollment) =>
+                enrollment.user === currentUser._id &&
+                enrollment.course === course._id
+            ))
 
-                    <button onClick={(event) => {
-                      event.preventDefault();
-                      deleteCourse(course._id);
-                    }} className="btn btn-danger wd-card-delete-button float-end"
-                      id="wd-delete-course-click">
-                      Delete
-                    </button>
-                    <button id="wd-edit-course-click"
-                      onClick={(event) => {
+            .map((course) => (
+              <Col className="wd-dashboard-course" style={{ width: "300px" }}>
+                <Card>
+                  <Link to={`/Kambaz/Courses/${course._id}/Home`}
+                    className="wd-dashboard-course-link text-decoration-none text-dark" >
+                    <Card.Img variant="top" src={course.image} width="100%" height={160} /><br />
+                    <div className="card-body">
+                      <h5 className="wd-dashboard-course-title card-title overflow-hidden text-nowrap">
+                        {course.name} </h5>
+                      <p className="wd-dashboard-course-title card-text overflow-y-hidden" style={{ maxHeight: 50 }}>
+                        {course.description} </p>
+                      <button className="btn btn-primary wd-go-button"> Go </button>
+
+                      <button onClick={(event) => {
                         event.preventDefault();
-                        setCourse(course);
-                      }}
-                      className="btn btn-warning me-2 wd-card-edit-button float-end" >
-                      Edit
-                    </button>
-                  </div>
-                </Link>
-              </Card>
-            </Col>
-          ))}
+                        deleteCourse(course._id);
+                      }} className="btn btn-danger wd-card-delete-button float-end"
+                        id="wd-delete-course-click">
+                        Delete
+                      </button>
+                      <button id="wd-edit-course-click"
+                        onClick={(event) => {
+                          event.preventDefault();
+                          setCourse(course);
+                        }}
+                        className="btn btn-warning me-2 wd-card-edit-button float-end" >
+                        Edit
+                      </button>
+                    </div>
+                  </Link>
+                </Card>
+              </Col>
+            ))}
         </Row>
       </div>
     </div>
