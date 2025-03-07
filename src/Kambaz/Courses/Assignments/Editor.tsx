@@ -179,17 +179,9 @@ export default function AssignmentEditor() {
         </Link>
         <Link to={`/Kambaz/Courses/${cid}/Assignments`}>
           <Button type="button" id="wd-editor-save" className="btn-save" onClick={() => {
-            if (assignmentData._id === "NewAssignment") {
-              const newAssignmentData = {
-                ...assignmentData,
-                _id: "A" + uuidv4()
-              };
-              setAssignmentData(newAssignmentData);
-              dispatch(updateAssignment(newAssignmentData));
-              console.log("Assignment saved with new ID:", JSON.stringify(newAssignmentData));
-              console.log("Assignments:", JSON.stringify(assignments));
-
-            }
+            dispatch(updateAssignment(assignmentData));
+            console.log("AssignmentData: ", JSON.stringify(assignmentData));
+            console.log("Assignments: ", JSON.stringify(assignments));
           }}
           >Save</Button>
         </Link>

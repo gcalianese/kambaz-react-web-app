@@ -5,6 +5,7 @@ import { addAssignment, updateAssignment, deleteAssignment }
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
+import { v4 as uuidv4 } from "uuid";
 
 export default function AssignmentsControls() {
     const { assignments } = useSelector((state: any) => state.assignmentsReducer);
@@ -20,8 +21,9 @@ export default function AssignmentsControls() {
                 size="lg"
                 className="me-1 float-end"
                 onClick={() => {
-                        dispatch(addAssignment({course : cid}));
-                        navigate(`/Kambaz/Courses/${cid}/Assignments/NewAssignment`);
+                        const id = uuidv4()
+                        dispatch(addAssignment({course : cid, _id : id}));
+                        navigate(`/Kambaz/Courses/${cid}/Assignments/${id}`);
                 }}
             >
                 <FaPlus /> Assignment

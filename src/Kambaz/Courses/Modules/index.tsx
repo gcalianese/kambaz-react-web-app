@@ -6,9 +6,7 @@ import ModuleControlButtons from "./ModuleControlButtons";
 import { BsGripVertical } from "react-icons/bs";
 import LessonControlButtons from "./LessonControlButtons";
 import { useParams } from "react-router";
-import * as db from "../../Database";
 import ModulesControls from "./ModulesControl";
-import { v4 as uuidv4 } from "uuid";
 import { FormControl } from "react-bootstrap";
 
 
@@ -51,7 +49,7 @@ export default function Modules() {
               {module.lessons && (
                 <ul className="wd-lessons list-group rounded-0">
                   {module.lessons.map((lesson: any) => (
-                    <li className="wd-lesson list-group-item p-3 ps-1">
+                    <li className="wd-lesson list-group-item p-3 ps-1" key={lesson._id}>
                       <BsGripVertical className="me-2 fs-3" /> {lesson.name} <LessonControlButtons />
                     </li>
                   ))}</ul>)}</li>))}</ul>

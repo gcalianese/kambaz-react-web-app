@@ -10,9 +10,10 @@ const assignmentsSlice = createSlice({
     reducers: {
         addAssignment: (state, action) => {
             const { course } = action.payload; 
+            const { _id } = action.payload;
 
             const newAssignment = {
-                _id: "NewAssignment",
+                _id: _id,
                 title: "New Assignment",
                 course: course,
                 available: new Date().toISOString(),

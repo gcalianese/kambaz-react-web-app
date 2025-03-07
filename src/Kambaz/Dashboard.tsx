@@ -64,7 +64,7 @@ export default function Dashboard({ courses, course, setCourse, addNewCourse,
             ))
 
             .map((course) => (
-              <Col className="wd-dashboard-course" style={{ width: "300px" }}>
+              <Col className="wd-dashboard-course" style={{ width: "300px" }} key={course._id}>
                 <Card>
                   <Link to={`/Kambaz/Courses/${course._id}/Home`}
                     className="wd-dashboard-course-link text-decoration-none text-dark" >

@@ -32,7 +32,7 @@ export default function CourseStatus() {
       </div>
       <br />
       {buttons.map((button) => (
-        <Button variant="secondary" size="lg" className="w-100 mt-1 text-start">
+        <Button variant="secondary" size="lg" className="w-100 mt-1 text-start" key={button.label}>
           <button.icon className="me-2 fs-5" />{button.label}
         </Button>
       ))}
