@@ -16,6 +16,7 @@ export default function AccountNavigation() {
         <div id="wd-account-navigation">
             {links.map((link) => (
                 <Link to={link.path}
+                key={link.label}
                     id={`wd-account-${link.label}`}
                     className={`fs-5 wd-account-nav-link d-block mb-2 ps-1 me-3 ${pathname.includes(link.label) ? "active wd-black-text" : "text-danger"}`}> {link.label} </Link>
             ))}
