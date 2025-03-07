@@ -184,9 +184,11 @@ export default function AssignmentEditor() {
                 _id: "A" + uuidv4()
               };
               setAssignmentData(updatedAssignmentData);
-            }
-            dispatch(updateAssignment(assignmentData));
+              dispatch(updateAssignment(updatedAssignmentData));
 
+            } else {
+              dispatch(updateAssignment(assignmentData));
+            }
           }}
           >Save</Button>
         </Link>

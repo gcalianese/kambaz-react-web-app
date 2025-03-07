@@ -11,18 +11,7 @@ import { useEffect, useState } from "react";
 export default function KambazNavigation() {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
   const { pathname } = useLocation();
-  const [links, setLinks] = useState<any[]>([
-    {
-      label: "Account",
-      path: currentUser ? "/Kambaz/Account/Profile" : "/Kambaz/Account/Signin",
-      icon: FaRegCircleUser
-    },
-    { label: "Dashboard", path: "/Kambaz/Dashboard", icon: AiOutlineDashboard },
-    { label: "Courses", path: "/Kambaz/Courses", icon: LiaBookSolid },
-    { label: "Calendar", path: "/Kambaz/Calendar", icon: IoCalendarOutline },
-    { label: "Inbox", path: "/Kambaz/Inbox", icon: FaInbox },
-    { label: "Labs", path: "/Labs", icon: LiaCogSolid },
-  ]);
+  const [links, setLinks] = useState<any[]>([]);
 
   useEffect(() => {
     const updatedLinks = [
@@ -32,7 +21,7 @@ export default function KambazNavigation() {
         icon: FaRegCircleUser
       },
       { label: "Dashboard", path: "/Kambaz/Dashboard", icon: AiOutlineDashboard },
-      { label: "Courses", path: "/Kambaz/Courses", icon: LiaBookSolid },
+      { label: "Courses", path: "/Kambaz/Dashboard", icon: LiaBookSolid },
       { label: "Calendar", path: "/Kambaz/Calendar", icon: IoCalendarOutline },
       { label: "Inbox", path: "/Kambaz/Inbox", icon: FaInbox },
       { label: "Labs", path: "/Labs", icon: LiaCogSolid },
@@ -40,8 +29,6 @@ export default function KambazNavigation() {
 
     setLinks(updatedLinks);
   }, [currentUser]);
-
-
 
   return (
     <ListGroup id="wd-kambaz-navigation" style={{ width: 120 }}
@@ -51,7 +38,7 @@ export default function KambazNavigation() {
         <img src="/images/NEU.png" width="75px" />
       </ListGroup.Item>
       {links.map((link) => (
-        <ListGroup.Item key={link.path} as={Link} to={link.path} className={`bg-black text-center border-0
+        <ListGroup.Item key={link.label} as={Link} to={link.path} className={`bg-black text-center border-0
               ${pathname.includes(link.label) ? "text-danger bg-white" : "text-white bg-black"}`}>
           <link.icon className={`fs-1 ${pathname.includes(link.label) ? "text-danger" : link.label.includes("Account") ? "text-white" : "text-danger"}`} />
           <br />
