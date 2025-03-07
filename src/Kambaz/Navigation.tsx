@@ -5,7 +5,7 @@ import { FaInbox, FaRegCircleUser } from "react-icons/fa6";
 import { Link, useLocation } from "react-router-dom";
 import { ListGroup } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 export default function KambazNavigation() {
@@ -13,15 +13,36 @@ export default function KambazNavigation() {
   const { pathname } = useLocation();
   const [links, setLinks] = useState<any[]>([
     {
-      label: "Account", path: currentUser ? "/Kambaz/Account/Profile" : "/Kambaz/Account/Signin",
+      label: "Account",
+      path: currentUser ? "/Kambaz/Account/Profile" : "/Kambaz/Account/Signin",
       icon: FaRegCircleUser
     },
     { label: "Dashboard", path: "/Kambaz/Dashboard", icon: AiOutlineDashboard },
-    { label: "Courses", path: "/Kambaz/Dashboard", icon: LiaBookSolid },
+    { label: "Courses", path: "/Kambaz/Courses", icon: LiaBookSolid },
     { label: "Calendar", path: "/Kambaz/Calendar", icon: IoCalendarOutline },
     { label: "Inbox", path: "/Kambaz/Inbox", icon: FaInbox },
     { label: "Labs", path: "/Labs", icon: LiaCogSolid },
   ]);
+
+  useEffect(() => {
+    const updatedLinks = [
+      {
+        label: "Account",
+        path: currentUser ? "/Kambaz/Account/Profile" : "/Kambaz/Account/Signin",
+        icon: FaRegCircleUser
+      },
+      { label: "Dashboard", path: "/Kambaz/Dashboard", icon: AiOutlineDashboard },
+      { label: "Courses", path: "/Kambaz/Courses", icon: LiaBookSolid },
+      { label: "Calendar", path: "/Kambaz/Calendar", icon: IoCalendarOutline },
+      { label: "Inbox", path: "/Kambaz/Inbox", icon: FaInbox },
+      { label: "Labs", path: "/Labs", icon: LiaCogSolid },
+    ];
+
+    setLinks(updatedLinks);
+  }, [currentUser]);
+
+
+
   return (
     <ListGroup id="wd-kambaz-navigation" style={{ width: 120 }}
       className="rounded-0 position-fixed bottom-0 top-0 d-none d-md-block bg-black z-2">

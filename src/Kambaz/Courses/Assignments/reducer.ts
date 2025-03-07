@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { assignments } from "../../Database";
-import { v4 as uuidv4 } from "uuid";
+import { useNavigate } from "react-router";
 const initialState = {
     assignments: assignments,
 };
@@ -8,19 +8,21 @@ const assignmentsSlice = createSlice({
     name: "assignments",
     initialState,
     reducers: {
-        addAssignment: (state, { payload: assignment }) => {
+        addAssignment: (state, action) => {
+            const { course } = action.payload; 
+
             const newAssignment = {
-                _id: uuidv4(), 
-                title: assignment.title, 
-                course: assignment.course,
-                available: assignment.available,
-                due: assignment.due,
-                until: assignment.until,
-                available_dt: assignment.available_dt,
-                due_dt: assignment.due_dt,
-                until_dt: assignment.until_dt,
-                description: assignment.description,
-                points: assignment.points,
+                _id: "NewAssignment",
+                title: "New Assignment",
+                course: course,
+                available: new Date().toISOString(),
+                due: new Date().toISOString(),
+                until: new Date().toISOString(),
+                available_dt: new Date().toISOString(),
+                due_dt: new Date().toISOString(),
+                until_dt: new Date().toISOString(),
+                description: "Assignment Description",
+                points: 100,
             };
             state.assignments.push(newAssignment);
         },

@@ -6,6 +6,7 @@ import { addAssignment, updateAssignment, deleteAssignment }
   from "./reducer";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 export default function AssignmentEditor() {
   const { assignments } = useSelector((state: any) => state.assignmentsReducer);
@@ -27,8 +28,8 @@ export default function AssignmentEditor() {
       <Form.Label htmlFor="wd-name" className="mb-3"><span className="wd-bold">Assignment Name</span></Form.Label>
 
       <div className="wd-textarea-container">
-        <Form.Control id="wd-name" defaultValue={assignment.title} className="mb-3" onChange={(e) => setAssignmentData({... assignmentData, title: e.target.value})}/>
-        <Form.Control as="textarea" id="wd-description" className="mb-5 textarea" onChange={(e) => setAssignmentData({... assignmentData, description: e.target.value})}>
+        <Form.Control id="wd-name" defaultValue={assignment.title} className="mb-3" onChange={(e) => setAssignmentData({ ...assignmentData, title: e.target.value })} />
+        <Form.Control as="textarea" id="wd-description" className="mb-5 textarea" onChange={(e) => setAssignmentData({ ...assignmentData, description: e.target.value })}>
           {assignment.description}
         </Form.Control>
       </div>
@@ -55,7 +56,7 @@ export default function AssignmentEditor() {
 
         <Col xs="7" className="text-start ms-3">
           <Row className="wd-row">
-            <Form.Control id="wd-points" className="wd-assignment-editor-dropdown" defaultValue={assignment.points} onChange={(e) => setAssignmentData({... assignmentData, points: e.target.value})}/>
+            <Form.Control id="wd-points" className="wd-assignment-editor-dropdown" defaultValue={assignment.points} onChange={(e) => setAssignmentData({ ...assignmentData, points: e.target.value })} />
           </Row>
           <Row className="wd-row">
             <Form.Select id="wd-group" className="wd-assignment-editor-dropdown">
@@ -133,7 +134,7 @@ export default function AssignmentEditor() {
                 <Form.Label htmlFor="wd-due-date" className="wd-bold">Due</Form.Label>
               </Row>
               <Row className="wd-row-small ms-1">
-                <Form.Control type="datetime-local" defaultValue={assignment.due_dt} id="wd-due-date" className="wd-date-time" onChange={(e) => setAssignmentData({... assignmentData, due_dt: e.target.value})}/>
+                <Form.Control type="datetime-local" defaultValue={assignment.due_dt} id="wd-due-date" className="wd-date-time" onChange={(e) => setAssignmentData({ ...assignmentData, due_dt: e.target.value })} />
               </Row>
               <Row className="wd-row-small mt-1 g-2">
                 <Col xs={12} md={6} className="d-flex flex-column">
@@ -145,7 +146,7 @@ export default function AssignmentEditor() {
                     defaultValue={assignment.available_dt}
                     id="wd-available-from"
                     className="wd-date-time"
-                    onChange={(e) => setAssignmentData({... assignmentData, available_dt: e.target.value})}
+                    onChange={(e) => setAssignmentData({ ...assignmentData, available_dt: e.target.value })}
                   />
                 </Col>
                 <Col xs={12} md={6} className="d-flex flex-column">
@@ -157,7 +158,7 @@ export default function AssignmentEditor() {
                     defaultValue={assignment.until_dt}
                     id="wd-available-until"
                     className="wd-date-time"
-                    onChange={(e) => setAssignmentData({... assignmentData, until_dt: e.target.value})}
+                    onChange={(e) => setAssignmentData({ ...assignmentData, until_dt: e.target.value })}
                   />
                 </Col>
               </Row>
@@ -176,7 +177,17 @@ export default function AssignmentEditor() {
           <Button type="button" id="wd-editor-cancel" className="btn-secondary">Cancel</Button>
         </Link>
         <Link to={`/Kambaz/Courses/${cid}/Assignments`}>
-          <Button type="button" id="wd-editor-save" className="btn-save" onClick={() => dispatch(updateAssignment(assignmentData))} 
+          <Button type="button" id="wd-editor-save" className="btn-save" onClick={() => {
+            if (assignmentData._id === "NewAssignment") {
+              const updatedAssignmentData = {
+                ...assignmentData,
+                _id: "A" + uuidv4()
+              };
+              setAssignmentData(updatedAssignmentData);
+            }
+            dispatch(updateAssignment(assignmentData));
+
+          }}
           >Save</Button>
         </Link>
       </div>
