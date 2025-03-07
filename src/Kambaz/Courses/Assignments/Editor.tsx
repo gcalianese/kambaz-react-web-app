@@ -30,8 +30,7 @@ export default function AssignmentEditor() {
 
       <div className="wd-textarea-container">
         <Form.Control id="wd-name" defaultValue={assignment.title} className="mb-3" onChange={(e) => setAssignmentData({ ...assignmentData, title: e.target.value })} />
-        <Form.Control as="textarea" id="wd-description" className="mb-5 textarea" onChange={(e) => setAssignmentData({ ...assignmentData, description: e.target.value })}>
-          {assignment.description}
+        <Form.Control as="textarea" defaultValue= {assignment.description} id="wd-description" className="mb-5 textarea" onChange={(e) => setAssignmentData({ ...assignmentData, description: e.target.value })}>
         </Form.Control>
       </div>
 

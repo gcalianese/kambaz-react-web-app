@@ -5,7 +5,6 @@ import { BsGripVertical } from "react-icons/bs";
 import AssignmentsControlButtons from "./AssignmentsControlButtons"
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import { LuNotebookPen } from "react-icons/lu";
-import * as db from "../../Database";
 import { useParams } from "react-router";
 import { useSelector } from "react-redux";
 
@@ -35,7 +34,7 @@ export default function Assignments() {
               {assignments
                 .filter((assignment: any) => assignment.course === cid)
                 .map((assignment: any) => (
-                  <ListGroup.Item className="wd-assignment p-3 ps-1 list-group-item rounded-0 d-flex align-items-center">
+                  <ListGroup.Item className="wd-assignment p-3 ps-1 list-group-item rounded-0 d-flex align-items-center" key={assignment._id}>
                     <span className="wd-assignment-icon-container">
                       <BsGripVertical className="me-2 fs-3 wd-assignment-drag" />
                       <LuNotebookPen className="wd-assignment-icon" />
