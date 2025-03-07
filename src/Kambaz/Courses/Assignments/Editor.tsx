@@ -7,6 +7,7 @@ import { addAssignment, updateAssignment, deleteAssignment }
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
+import JsonStringify from "../../../Labs/Lab3/JsonStringify";
 
 export default function AssignmentEditor() {
   const { assignments } = useSelector((state: any) => state.assignmentsReducer);
@@ -179,15 +180,15 @@ export default function AssignmentEditor() {
         <Link to={`/Kambaz/Courses/${cid}/Assignments`}>
           <Button type="button" id="wd-editor-save" className="btn-save" onClick={() => {
             if (assignmentData._id === "NewAssignment") {
-              const updatedAssignmentData = {
+              const newAssignmentData = {
                 ...assignmentData,
                 _id: "A" + uuidv4()
               };
-              setAssignmentData(updatedAssignmentData);
-              dispatch(updateAssignment(updatedAssignmentData));
+              setAssignmentData(newAssignmentData);
+              dispatch(updateAssignment(newAssignmentData));
+              console.log("Assignment saved with new ID:", JSON.stringify(newAssignmentData));
+              console.log("Assignments:", JSON.stringify(assignments));
 
-            } else {
-              dispatch(updateAssignment(assignmentData));
             }
           }}
           >Save</Button>
