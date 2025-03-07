@@ -1,8 +1,8 @@
 import { Form, Row, Col, Button } from "react-bootstrap";
 import { HiOutlineX } from "react-icons/hi";
 import * as db from "../../Database";
-import { useParams, Link } from "react-router";
-import { addAssignment, updateAssignment, deleteAssignment }
+import { useParams, Link, useNavigate } from "react-router";
+import { addAssignment, updateAssignment, deleteAssignment, editAssignmentId }
   from "./reducer";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
@@ -17,6 +17,7 @@ export default function AssignmentEditor() {
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state: any) => state.accountReducer);
   const [assignmentData, setAssignmentData] = useState(assignment);
+  const navigate = useNavigate();
 
 
   if (!assignment) {
@@ -30,7 +31,7 @@ export default function AssignmentEditor() {
 
       <div className="wd-textarea-container">
         <Form.Control id="wd-name" defaultValue={assignment.title} className="mb-3" onChange={(e) => setAssignmentData({ ...assignmentData, title: e.target.value })} />
-        <Form.Control as="textarea" defaultValue= {assignment.description} id="wd-description" className="mb-5 textarea" onChange={(e) => setAssignmentData({ ...assignmentData, description: e.target.value })}>
+        <Form.Control as="textarea" defaultValue={assignment.description} id="wd-description" className="mb-5 textarea" onChange={(e) => setAssignmentData({ ...assignmentData, description: e.target.value })}>
         </Form.Control>
       </div>
 
@@ -173,17 +174,28 @@ export default function AssignmentEditor() {
 
       <hr />
       <div className="text-end">
-        <Link to={`/Kambaz/Courses/${cid}/Assignments`}>
-          <Button type="button" id="wd-editor-cancel" className="btn-secondary">Cancel</Button>
-        </Link>
-        <Link to={`/Kambaz/Courses/${cid}/Assignments`}>
-          <Button type="button" id="wd-editor-save" className="btn-save" onClick={() => {
-            dispatch(updateAssignment(assignmentData));
-            console.log("AssignmentData: ", JSON.stringify(assignmentData));
-            console.log("Assignments: ", JSON.stringify(assignments));
-          }}
-          >Save</Button>
-        </Link>
+        <Button type="button" id="wd-editor-cancel" className="btn-secondary"
+          onClick={() => {
+            if (!assignmentData._id.startsWith("A")) {
+              dispatch(deleteAssignment({ assignment: assignmentData }));
+            }
+            navigate(`/Kambaz/Courses/${cid}/Assignments`)
+          }
+
+          }>Cancel</Button>
+        <Button type="button" id="wd-editor-save" className="btn-save" onClick={() => {
+
+          if (!assignmentData._id.startsWith("A")) {
+            dispatch(editAssignmentId({ assignment: assignmentData }))
+          }
+          setAssignmentData({ ...assignmentData, _id: "A" + assignmentData._id })
+          dispatch(updateAssignment({ assignment: assignmentData }));
+
+          console.log("AssignmentData: ", JSON.stringify(assignmentData));
+          console.log("Assignments: ", JSON.stringify(assignments));
+          navigate(`/Kambaz/Courses/${cid}/Assignments`)
+        }}
+        >Save</Button>
       </div>
 
     </Form.Group >
