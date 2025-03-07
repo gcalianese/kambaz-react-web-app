@@ -7,10 +7,11 @@ import { HiMagnifyingGlass } from "react-icons/hi2";
 import { LuNotebookPen } from "react-icons/lu";
 import * as db from "../../Database";
 import { useParams } from "react-router";
+import { useSelector } from "react-redux";
 
 
 export default function Assignments() {
-  const assignments = db.assignments;
+  const { assignments } = useSelector((state: any) => state.assignmentsReducer);
   const { cid } = useParams();
 
   return (
