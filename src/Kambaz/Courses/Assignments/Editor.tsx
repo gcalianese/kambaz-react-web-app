@@ -188,10 +188,7 @@ export default function AssignmentEditor() {
             setAssignmentData({ ...assignmentData, _id: "A" + assignmentData._id })
           }
 
-
           dispatch(updateAssignment({ assignment: assignmentData }));
-          console.log("assignmentData: " + JSON.stringify(assignmentData))
-          console.log("updated A?: " + JSON.stringify(assignments))
           navigate(`/Kambaz/Courses/${cid}/Assignments`)
         }}
         >Save</Button>
