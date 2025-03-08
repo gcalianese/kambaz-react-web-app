@@ -6,18 +6,28 @@ import AssignmentsControlButtons from "./AssignmentsControlButtons"
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import { LuNotebookPen } from "react-icons/lu";
 import { useParams } from "react-router";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { FaTrash } from "react-icons/fa";
+import { deleteAssignmentId } from "./reducer";
+import { useState } from "react";
+import AssignmentDelete from "./AssignmentDelete";
+
 
 
 export default function Assignments() {
   const { assignments } = useSelector((state: any) => state.assignmentsReducer);
   const { cid } = useParams();
-  const formatDate = (dateString : any) => {
+  const formatDate = (dateString: any) => {
     return new Date(dateString)
       .toLocaleString('en-US', { month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true })
       .replace(',', '')
   };
- 
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
+  const dispatch = useDispatch();
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
     <div id="wd-assignments">
       <div className="wd-assignments-controls-container mb-5">
@@ -25,7 +35,7 @@ export default function Assignments() {
           <HiMagnifyingGlass />
         </span>
         <input placeholder="Search..." id="wd-search-assignment" />
-        <span className="float-end"><AssignmentsControls /></span>
+        {currentUser.rolse === "FACULTY" && <span className="float-end"><AssignmentsControls /></span>}
       </div>
 
       <div>
@@ -51,6 +61,11 @@ export default function Assignments() {
                           Not available until
                         </span> {formatDate(assignment.available_dt)} | <span className="wd-bold"> Due </span> {formatDate(assignment.due_dt)} | {assignment.points} pts</label>
                     </div>
+                    {currentUser.role === "FACULTY" && <FaTrash className="me-1"
+                      onClick={handleShow}
+                    ></FaTrash>}
+                     <AssignmentDelete show={show} handleClose={handleClose} dialogTitle="Delete Assignment?" assignment={assignment}></AssignmentDelete>
+                    
                     <LessonControlButtons />
                   </ListGroup.Item>
                 ))

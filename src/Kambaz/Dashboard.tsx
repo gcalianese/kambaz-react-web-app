@@ -75,22 +75,24 @@ export default function Dashboard({ courses, course, setCourse, addNewCourse,
                       <p className="wd-dashboard-course-title card-text overflow-y-hidden" style={{ maxHeight: 50 }}>
                         {course.description} </p>
                       <button className="btn btn-primary wd-go-button"> Go </button>
-
-                      <button onClick={(event) => {
-                        event.preventDefault();
-                        deleteCourse(course._id);
-                      }} className="btn btn-danger wd-card-delete-button float-end"
-                        id="wd-delete-course-click">
-                        Delete
-                      </button>
-                      <button id="wd-edit-course-click"
-                        onClick={(event) => {
-                          event.preventDefault();
-                          setCourse(course);
-                        }}
-                        className="btn btn-warning me-2 wd-card-edit-button float-end" >
-                        Edit
-                      </button>
+                      {currentUser.role === "FACULTY" &&
+                        <>
+                          <button onClick={(event) => {
+                            event.preventDefault();
+                            deleteCourse(course._id);
+                          }} className="btn btn-danger wd-card-delete-button float-end"
+                            id="wd-delete-course-click">
+                            Delete
+                          </button>
+                          <button id="wd-edit-course-click"
+                            onClick={(event) => {
+                              event.preventDefault();
+                              setCourse(course);
+                            }}
+                            className="btn btn-warning me-2 wd-card-edit-button float-end" >
+                            Edit
+                          </button>
+                        </>}
                     </div>
                   </Link>
                 </Card>
