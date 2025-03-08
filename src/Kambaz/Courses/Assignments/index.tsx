@@ -6,7 +6,7 @@ import AssignmentsControlButtons from "./AssignmentsControlButtons"
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import { LuNotebookPen } from "react-icons/lu";
 import { useParams } from "react-router";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { FaTrash } from "react-icons/fa";
 import { useState } from "react";
 import AssignmentDelete from "./AssignmentDelete";
@@ -20,7 +20,6 @@ export default function Assignments() {
       .replace(',', '')
   };
   const { currentUser } = useSelector((state: any) => state.accountReducer);
-  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
   const [assignmentToDelete, setAssignmentToDelete] = useState<any>(null);
 
