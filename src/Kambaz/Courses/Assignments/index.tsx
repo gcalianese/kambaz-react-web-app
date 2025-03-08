@@ -54,7 +54,7 @@ export default function Assignments() {
                   <ListGroup.Item className="wd-assignment p-3 ps-1 list-group-item rounded-0 d-flex align-items-center" key={assignment._id}>
                     <span className="wd-assignment-icon-container">
                       <BsGripVertical className="me-2 fs-3 wd-assignment-drag" />
-                      <LuNotebookPen className="wd-assignment-icon" />
+                      {currentUser.role === "FACULTY" && <LuNotebookPen className="wd-assignment-icon" />}
                     </span>
                     <div className="wd-assignment-text flex-grow-1">
                       {currentUser.role === "FACULTY" ? (
@@ -63,15 +63,14 @@ export default function Assignments() {
                         </a>
                       ) : (
                         <span className="wd-assignment-name">{assignment.title}</span>
-                      )}                      <label className="wd-assignment-description">
+                      )}
+                      <label className="wd-assignment-description">
                         <span className="text-danger"> Multiple Modules </span> | <span className="wd-bold">
                           Not available until
                         </span> {formatDate(assignment.available_dt)} | <span className="wd-bold"> Due </span> {formatDate(assignment.due_dt)} | {assignment.points} pts</label>
                     </div>
-                    {currentUser.role === "FACULTY" && <FaTrash className="me-1"
-                      onClick={() => handleShow(assignment)}
-                    ></FaTrash>}
-                    {currentUser.role === "FACULTY" && <AssignmentDelete show={show} handleClose={handleClose} dialogTitle={`Delete \"${assignmentToDelete.title}\" Assignment?`} assignment={assignmentToDelete}></AssignmentDelete>}
+                    {currentUser.role === "FACULTY" && <FaTrash className="me-1" onClick={() => handleShow(assignment)}></FaTrash>}
+                    {currentUser.role === "FACULTY" && assignmentToDelete && <AssignmentDelete show={show} handleClose={handleClose} dialogTitle={`Delete \"${assignmentToDelete.title}\" Assignment?`} assignment={assignmentToDelete}></AssignmentDelete>}
                     <LessonControlButtons />
                   </ListGroup.Item>
                 ))
@@ -83,3 +82,4 @@ export default function Assignments() {
     </div>
   );
 }
+

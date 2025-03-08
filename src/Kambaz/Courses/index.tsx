@@ -9,7 +9,7 @@ import PeopleTable from "./People/Table";
 import ProtectedCourseRoute from "./ProtectedCourseRoute";
 
 
-export default function Courses({ courses } : { courses: any[]; }) {
+export default function Courses({ courses }: { courses: any[]; }) {
   const { cid } = useParams();
   const course = courses.find((course) => course._id === cid);
   const { pathname } = useLocation();
