@@ -25,9 +25,15 @@ export default function Assignments() {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
+  const [assignmentToDelete, setAssignmentToDelete] = useState<any>(null);
+
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = (assignment: any) => {
+    setAssignmentToDelete(assignment);
+    setShow(true);
+  };
+
   return (
     <div id="wd-assignments">
       <div className="wd-assignments-controls-container mb-5">
@@ -35,7 +41,7 @@ export default function Assignments() {
           <HiMagnifyingGlass />
         </span>
         <input placeholder="Search..." id="wd-search-assignment" />
-        {currentUser.rolse === "FACULTY" && <span className="float-end"><AssignmentsControls /></span>}
+        {currentUser.role === "FACULTY" && <span className="float-end"><AssignmentsControls /></span>}
       </div>
 
       <div>
@@ -62,10 +68,10 @@ export default function Assignments() {
                         </span> {formatDate(assignment.available_dt)} | <span className="wd-bold"> Due </span> {formatDate(assignment.due_dt)} | {assignment.points} pts</label>
                     </div>
                     {currentUser.role === "FACULTY" && <FaTrash className="me-1"
-                      onClick={handleShow}
+                      onClick={() => handleShow(assignment)}
                     ></FaTrash>}
-                     <AssignmentDelete show={show} handleClose={handleClose} dialogTitle="Delete Assignment?" assignment={assignment}></AssignmentDelete>
-                    
+                    <AssignmentDelete show={show} handleClose={handleClose} dialogTitle="Delete Assignment?" assignment={assignmentToDelete}></AssignmentDelete>
+
                     <LessonControlButtons />
                   </ListGroup.Item>
                 ))

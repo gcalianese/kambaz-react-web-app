@@ -15,9 +15,10 @@ export default function AssignmentDelete({ show, handleClose, dialogTitle, assig
                 <Button variant="secondary" onClick={handleClose}> Cancel </Button>
                 <Button variant="primary"
                     onClick={() => {
-                        dispatch(deleteAssignment({ assignment }))
+                        dispatch(deleteAssignment({assignment}))
+                        console.log("deleting: " + JSON.stringify(assignment))
                         handleClose();
-                    }} > Delete Assignment? </Button>
+                    }} > Yes </Button>
             </Modal.Footer>
         </Modal>
     );
