@@ -8,7 +8,6 @@ import { LuNotebookPen } from "react-icons/lu";
 import { useParams } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { FaTrash } from "react-icons/fa";
-import { deleteAssignmentId } from "./reducer";
 import { useState } from "react";
 import AssignmentDelete from "./AssignmentDelete";
 
@@ -66,7 +65,7 @@ export default function Assignments() {
                           {assignment.title}
                         </a>
                       ) : (
-                        <span className="wd-assignment-name">{assignment.title}</span> // Display as plain text for non-faculty users
+                        <span className="wd-assignment-name">{assignment.title}</span>
                       )}                      <label className="wd-assignment-description">
                         <span className="text-danger"> Multiple Modules </span> | <span className="wd-bold">
                           Not available until
@@ -76,7 +75,6 @@ export default function Assignments() {
                       onClick={() => handleShow(assignment)}
                     ></FaTrash>}
                     {currentUser.role === "FACULTY" && <AssignmentDelete show={show} handleClose={handleClose} dialogTitle={`Delete \"${assignmentToDelete.title}\" Assignment?`} assignment={assignmentToDelete}></AssignmentDelete>}
-                    
                     <LessonControlButtons />
                   </ListGroup.Item>
                 ))

@@ -1,16 +1,13 @@
 import { Button } from "react-bootstrap";
 import { FaPlus } from "react-icons/fa6";
-import { addAssignment, updateAssignment, deleteAssignment }
+import { addAssignment }
     from "./reducer";
-import { useSelector, useDispatch } from "react-redux";
-import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router";
 import { v4 as uuidv4 } from "uuid";
 
 export default function AssignmentsControls() {
-    const { assignments } = useSelector((state: any) => state.assignmentsReducer);
     const dispatch = useDispatch();
-    const { currentUser } = useSelector((state: any) => state.accountReducer);
     const { cid } = useParams();
     const navigate = useNavigate();
 

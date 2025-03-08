@@ -1,4 +1,4 @@
-import { Modal, FormControl, Button } from "react-bootstrap";
+import { Modal, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { deleteAssignment } from "./reducer";
 
@@ -16,7 +16,6 @@ export default function AssignmentDelete({ show, handleClose, dialogTitle, assig
                 <Button variant="primary"
                     onClick={() => {
                         dispatch(deleteAssignment({assignment}))
-                        console.log("deleting: " + JSON.stringify(assignment))
                         handleClose();
                     }} > Yes </Button>
             </Modal.Footer>
