@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { assignments } from "../../Database";
-import { useNavigate } from "react-router";
 const initialState = {
     assignments: assignments,
 };
@@ -30,14 +29,13 @@ const assignmentsSlice = createSlice({
         deleteAssignment: (state, { payload: { assignment } }) => {
             state.assignments = state.assignments.filter((a: any) => a._id !== assignment._id);
         },
-        updateAssignment: (state, { payload: assignment }) => {
+        updateAssignment: (state, { payload: { assignment }}) => {  
             state.assignments = state.assignments.map((a: any) =>
-                a._id === assignment._id ? { ...a, ...assignment } : a
-            );
+                a._id === assignment._id ? { ...a, ...assignment } : a);
         },
         editAssignmentId: (state, { payload: { assignment } }) => {
             state.assignments = state.assignments.map((a: any) =>
-                a._id === assignment._id ? { ...a, _id: "A" + assignment._id } : a
+                a._id === assignment._id ? { ...a, ...assignment, _id: "A" + assignment._id } : a
             );
         },
     },

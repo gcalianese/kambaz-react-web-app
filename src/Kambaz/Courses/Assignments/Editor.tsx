@@ -1,13 +1,11 @@
 import { Form, Row, Col, Button } from "react-bootstrap";
 import { HiOutlineX } from "react-icons/hi";
 import * as db from "../../Database";
-import { useParams, Link, useNavigate } from "react-router";
-import { addAssignment, updateAssignment, deleteAssignment, editAssignmentId }
+import { useParams, useNavigate } from "react-router";
+import { updateAssignment, deleteAssignment, editAssignmentId }
   from "./reducer";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
-import JsonStringify from "../../../Labs/Lab3/JsonStringify";
 
 export default function AssignmentEditor() {
   const { assignments } = useSelector((state: any) => state.assignmentsReducer);
@@ -19,7 +17,6 @@ export default function AssignmentEditor() {
   const [assignmentData, setAssignmentData] = useState(assignment);
   const navigate = useNavigate();
 
-
   if (!assignment) {
     return <h2>Assignment not found</h2>;
   }
@@ -30,8 +27,9 @@ export default function AssignmentEditor() {
       <Form.Label htmlFor="wd-name" className="mb-3"><span className="wd-bold">Assignment Name</span></Form.Label>
 
       <div className="wd-textarea-container">
-        <Form.Control id="wd-name" defaultValue={assignment.title} className="mb-3" onChange={(e) => setAssignmentData({ ...assignmentData, title: e.target.value })} />
-        <Form.Control as="textarea" defaultValue={assignment.description} id="wd-description" className="mb-5 textarea" onChange={(e) => setAssignmentData({ ...assignmentData, description: e.target.value })}>
+        <Form.Control id="wd-name" value={assignmentData.title} className="mb-3" onChange={(e) =>
+          setAssignmentData({ ...assignmentData, title: e.target.value })} />
+        <Form.Control as="textarea" value={assignmentData.description} id="wd-description" className="mb-5 textarea" onChange={(e) => setAssignmentData({ ...assignmentData, description: e.target.value })}>
         </Form.Control>
       </div>
 
@@ -57,7 +55,7 @@ export default function AssignmentEditor() {
 
         <Col xs="7" className="text-start ms-3">
           <Row className="wd-row">
-            <Form.Control id="wd-points" className="wd-assignment-editor-dropdown" defaultValue={assignment.points} onChange={(e) => setAssignmentData({ ...assignmentData, points: e.target.value })} />
+            <Form.Control id="wd-points" className="wd-assignment-editor-dropdown" value={assignmentData.points} onChange={(e) => setAssignmentData({ ...assignmentData, points: e.target.value })} />
           </Row>
           <Row className="wd-row">
             <Form.Select id="wd-group" className="wd-assignment-editor-dropdown">
@@ -144,7 +142,7 @@ export default function AssignmentEditor() {
                   </Form.Label>
                   <Form.Control
                     type="datetime-local"
-                    defaultValue={assignment.available_dt}
+                    value={assignmentData.available_dt}
                     id="wd-available-from"
                     className="wd-date-time"
                     onChange={(e) => setAssignmentData({ ...assignmentData, available_dt: e.target.value })}
@@ -156,7 +154,7 @@ export default function AssignmentEditor() {
                   </Form.Label>
                   <Form.Control
                     type="datetime-local"
-                    defaultValue={assignment.until_dt}
+                    value={assignmentData.until_dt}
                     id="wd-available-until"
                     className="wd-date-time"
                     onChange={(e) => setAssignmentData({ ...assignmentData, until_dt: e.target.value })}
@@ -187,12 +185,13 @@ export default function AssignmentEditor() {
 
           if (!assignmentData._id.startsWith("A")) {
             dispatch(editAssignmentId({ assignment: assignmentData }))
+            setAssignmentData({ ...assignmentData, _id: "A" + assignmentData._id })
           }
-          setAssignmentData({ ...assignmentData, _id: "A" + assignmentData._id })
-          dispatch(updateAssignment({ assignment: assignmentData }));
 
-          console.log("AssignmentData: ", JSON.stringify(assignmentData));
-          console.log("Assignments: ", JSON.stringify(assignments));
+
+          dispatch(updateAssignment({ assignment: assignmentData }));
+          console.log("assignmentData: " + JSON.stringify(assignmentData))
+          console.log("updated A?: " + JSON.stringify(assignments))
           navigate(`/Kambaz/Courses/${cid}/Assignments`)
         }}
         >Save</Button>
