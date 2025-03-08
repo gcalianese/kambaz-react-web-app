@@ -61,8 +61,13 @@ export default function Assignments() {
                       <LuNotebookPen className="wd-assignment-icon" />
                     </span>
                     <div className="wd-assignment-text flex-grow-1">
-                      <a href={`#/Kambaz/Courses/${cid}/Assignments/${assignment._id}`} className="wd-assignment-name">{assignment.title}</a>
-                      <label className="wd-assignment-description">
+                      {currentUser.role === "FACULTY" ? (
+                        <a href={`#/Kambaz/Courses/${cid}/Assignments/${assignment._id}`} className="wd-assignment-name">
+                          {assignment.title}
+                        </a>
+                      ) : (
+                        <span className="wd-assignment-name">{assignment.title}</span> // Display as plain text for non-faculty users
+                      )}                      <label className="wd-assignment-description">
                         <span className="text-danger"> Multiple Modules </span> | <span className="wd-bold">
                           Not available until
                         </span> {formatDate(assignment.available_dt)} | <span className="wd-bold"> Due </span> {formatDate(assignment.due_dt)} | {assignment.points} pts</label>
@@ -70,8 +75,8 @@ export default function Assignments() {
                     {currentUser.role === "FACULTY" && <FaTrash className="me-1"
                       onClick={() => handleShow(assignment)}
                     ></FaTrash>}
-                    <AssignmentDelete show={show} handleClose={handleClose} dialogTitle="Delete Assignment?" assignment={assignmentToDelete}></AssignmentDelete>
-
+                    {currentUser.role === "FACULTY" && <AssignmentDelete show={show} handleClose={handleClose} dialogTitle={`Delete \"${assignmentToDelete.title}\" Assignment?`} assignment={assignmentToDelete}></AssignmentDelete>}
+                    
                     <LessonControlButtons />
                   </ListGroup.Item>
                 ))
