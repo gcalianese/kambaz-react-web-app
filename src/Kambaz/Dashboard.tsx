@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { Row, Col, Card, FormControl } from "react-bootstrap";
+import { Row, Col, Card, FormControl, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import * as db from "./Database";
+import { useState } from "react";
 
 export default function Dashboard({ courses, course, setCourse, addNewCourse,
   deleteCourse, updateCourse }: {
@@ -11,11 +11,13 @@ export default function Dashboard({ courses, course, setCourse, addNewCourse,
   }
 ) {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
-  const { enrollments } = db;
-
+  const { enrollments } = useSelector((state: any) => state.enrollmentsReducer);
+  const [showAll, setShowAll] = useState(false);
   return (
     <div id="wd-dashboard">
-      <h1 id="wd-dashboard-title">Dashboard</h1> <hr />
+      <h1 id="wd-dashboard-title">Dashboard
+        {currentUser.role === "STUDENT" && <Button className="float-end" onClick={() => setShowAll(!showAll)}>Enrollments</Button>}</h1>
+      <hr />
       {currentUser.role === "FACULTY" && (
         <>
           <h5>New Course
@@ -44,21 +46,25 @@ export default function Dashboard({ courses, course, setCourse, addNewCourse,
       )}
 
 
-      <h2 id="wd-dashboard-published">Published Courses  ({
-        courses.filter((course) =>
-          enrollments.some(
-            (enrollment) =>
-              enrollment.user === currentUser._id &&
-              enrollment.course === course._id
-          )
-        ).length
-      })
-      </h2> <hr />
+      <h2 id="wd-dashboard-published">
+        Published Courses ({
+          showAll
+            ? courses.length
+            : courses.filter((course) =>
+              enrollments.some(
+                (enrollment: any) =>
+                  enrollment.user === currentUser._id &&
+                  enrollment.course === course._id
+              )
+            ).length
+        })
+      </h2>
+      <hr />
       <div id="wd-dashboard-courses">
         <Row xs={1} md={5} className="g-4">
           {courses.filter((course) =>
-            enrollments.some(
-              (enrollment) =>
+            showAll || enrollments.some(
+              (enrollment: any) =>
                 enrollment.user === currentUser._id &&
                 enrollment.course === course._id
             ))
