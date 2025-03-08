@@ -11,8 +11,6 @@ import { FaTrash } from "react-icons/fa";
 import { useState } from "react";
 import AssignmentDelete from "./AssignmentDelete";
 
-
-
 export default function Assignments() {
   const { assignments } = useSelector((state: any) => state.assignmentsReducer);
   const { cid } = useParams();

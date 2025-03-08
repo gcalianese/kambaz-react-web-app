@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { Row, Col, Card, FormControl, Button } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import { unenroll, enroll } from "./enrollmentsReducer";
 
 export default function Dashboard({ courses, course, setCourse, addNewCourse,
   deleteCourse, updateCourse }: {
@@ -13,6 +14,7 @@ export default function Dashboard({ courses, course, setCourse, addNewCourse,
   const { currentUser } = useSelector((state: any) => state.accountReducer);
   const { enrollments } = useSelector((state: any) => state.enrollmentsReducer);
   const [showAll, setShowAll] = useState(false);
+  const dispatch = useDispatch();
   return (
     <div id="wd-dashboard">
       <h1 id="wd-dashboard-title">Dashboard
@@ -68,7 +70,6 @@ export default function Dashboard({ courses, course, setCourse, addNewCourse,
                 enrollment.user === currentUser._id &&
                 enrollment.course === course._id
             ))
-
             .map((course) => (
               <Col className="wd-dashboard-course" style={{ width: "300px" }} key={course._id}>
                 <Card>
@@ -83,22 +84,35 @@ export default function Dashboard({ courses, course, setCourse, addNewCourse,
                       <button className="btn btn-primary wd-go-button"> Go </button>
                       {currentUser.role === "FACULTY" &&
                         <>
-                          <button onClick={(event) => {
+                          <Button onClick={(event) => {
                             event.preventDefault();
                             deleteCourse(course._id);
                           }} className="btn btn-danger wd-card-delete-button float-end"
                             id="wd-delete-course-click">
                             Delete
-                          </button>
-                          <button id="wd-edit-course-click"
+                          </Button>
+                          <Button id="wd-edit-course-click"
                             onClick={(event) => {
                               event.preventDefault();
                               setCourse(course);
                             }}
                             className="btn btn-warning me-2 wd-card-edit-button float-end" >
                             Edit
-                          </button>
+                          </Button>
                         </>}
+                      {currentUser.role === "STUDENT" && (
+                        enrollments.some((enrollment: any) => enrollment.user === currentUser._id && enrollment.course === course._id) ?
+                          <Button className="btn btn-danger wd-card-delete-button" onClick={(e) => {
+                            e.preventDefault();
+                            dispatch(unenroll({ user: currentUser, course: course }))
+                          }
+                          }>Unenroll</Button>
+                          :
+                          <Button className="btn btn-success wd-card-delete-button" onClick={(e) => {
+                            e.preventDefault();
+                            dispatch(enroll({ user: currentUser, course: course }))
+                          }}>Enroll</Button>
+                      )}
                     </div>
                   </Link>
                 </Card>

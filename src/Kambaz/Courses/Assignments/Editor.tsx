@@ -1,11 +1,10 @@
 import { Form, Row, Col, Button } from "react-bootstrap";
 import { HiOutlineX } from "react-icons/hi";
-import * as db from "../../Database";
 import { useParams, useNavigate } from "react-router";
 import { updateAssignment, deleteAssignment, editAssignmentId }
   from "./reducer";
 import { useSelector, useDispatch } from "react-redux";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function AssignmentEditor() {
   const { assignments } = useSelector((state: any) => state.assignmentsReducer);
@@ -13,7 +12,6 @@ export default function AssignmentEditor() {
   const { cid, aid } = useParams();
   const assignment = assignments.find((assignment: any) => (assignment._id === aid && assignment.course === cid))
   const dispatch = useDispatch();
-  const { currentUser } = useSelector((state: any) => state.accountReducer);
   const [assignmentData, setAssignmentData] = useState(assignment);
   const navigate = useNavigate();
 
