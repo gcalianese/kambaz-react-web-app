@@ -12,7 +12,12 @@ import { useSelector } from "react-redux";
 export default function Assignments() {
   const { assignments } = useSelector((state: any) => state.assignmentsReducer);
   const { cid } = useParams();
-
+  const formatDate = (dateString : any) => {
+    return new Date(dateString)
+      .toLocaleString('en-US', { month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true })
+      .replace(',', '')
+  };
+ 
   return (
     <div id="wd-assignments">
       <div className="wd-assignments-controls-container mb-5">
@@ -44,7 +49,7 @@ export default function Assignments() {
                       <label className="wd-assignment-description">
                         <span className="text-danger"> Multiple Modules </span> | <span className="wd-bold">
                           Not available until
-                        </span> {assignment.available} | <span className="wd-bold"> Due </span> {assignment.due} | {assignment.points} pts</label>
+                        </span> {formatDate(assignment.available_dt)} | <span className="wd-bold"> Due </span> {formatDate(assignment.due_dt)} | {assignment.points} pts</label>
                     </div>
                     <LessonControlButtons />
                   </ListGroup.Item>
