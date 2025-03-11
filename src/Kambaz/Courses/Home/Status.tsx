@@ -10,12 +10,12 @@ import { VscMegaphone } from "react-icons/vsc";
 
 export default function CourseStatus() {
   const buttons = [{ label: "Import Existing Content", icon: BiImport },
-    {label:"Import from Commons", icon: LiaFileImportSolid},
-    {label: "Choose Home Page", icon: PiHouseLineFill},
-    {label: "View Course Stream", icon: TiChartBar},
-    {label: "New Announcement", icon: VscMegaphone},
-    {label: "New Analytics", icon: TiChartBar},
-    {label: "View Course Notifications", icon: FaBell }
+  { label: "Import from Commons", icon: LiaFileImportSolid },
+  { label: "Choose Home Page", icon: PiHouseLineFill },
+  { label: "View Course Stream", icon: TiChartBar },
+  { label: "New Announcement", icon: VscMegaphone },
+  { label: "New Analytics", icon: TiChartBar },
+  { label: "View Course Notifications", icon: FaBell }
   ];
   return (
     <div id="wd-course-status" style={{ width: "350px" }}>

@@ -14,7 +14,7 @@ export default function ModuleEditor({ show, handleClose, dialogTitle, moduleNam
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}> Cancel </Button>
-                <Button variant="primary"
+                <Button variant="btn btn-danger"
                     onClick={() => {
                         addModule();
                         handleClose();

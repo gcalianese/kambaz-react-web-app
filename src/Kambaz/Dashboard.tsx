@@ -33,7 +33,7 @@ export default function Dashboard() {
             <button className="btn btn-primary float-end"
               id="wd-add-new-course-click"
               onClick={() => {
-                const updatedCourse = { ...course, _id: uuidv4() }
+                const updatedCourse = { ...course, _id: uuidv4(), image: "images/reactjs.jpg" }
                 setCourse(updatedCourse)
                 dispatch(addNewCourse({ course: updatedCourse }))
                 dispatch(enroll({ user: currentUser, course: updatedCourse }))
