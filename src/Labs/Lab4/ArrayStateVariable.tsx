@@ -5,7 +5,7 @@ export default function ArrayStateVariable() {
         setArray([...array, Math.floor(Math.random() * 100)]);
     };
     const deleteElement = (index: number) => {
-        setArray(array.filter((i) => i !== index));
+        setArray(array.filter((_, i) => i !== index));
     };
     return (
         <div id="wd-array-state-variables">
@@ -14,7 +14,7 @@ export default function ArrayStateVariable() {
 
             {array.map((item, index) => (
                 <div
-                    className="border rounded"
+                    className="border rounded d-flex justify-content-between align-items-center"
                     style={{
                         height: "55px",
                         width: "175px",
