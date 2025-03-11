@@ -131,7 +131,10 @@ export default function AssignmentEditor() {
                 <Form.Label htmlFor="wd-due-date" className="wd-bold">Due</Form.Label>
               </Row>
               <Row className="wd-row-small ms-1">
-                <Form.Control type="datetime-local" defaultValue={assignment.due_dt} id="wd-due-date" className="wd-date-time" onChange={(e) => setAssignmentData({ ...assignmentData, due_dt: e.target.value })} />
+                <Form.Control type="datetime-local"
+                  defaultValue={new Date(assignmentData.due_dt).toISOString().slice(0, 16)}
+                  id="wd-due-date" className="wd-date-time"
+                  onChange={(e) => setAssignmentData({ ...assignmentData, due_dt: e.target.value })} />
               </Row>
               <Row className="wd-row-small mt-1 g-2">
                 <Col xs={12} md={6} className="d-flex flex-column">
@@ -140,7 +143,7 @@ export default function AssignmentEditor() {
                   </Form.Label>
                   <Form.Control
                     type="datetime-local"
-                    value={assignmentData.available_dt}
+                    defaultValue={new Date(assignmentData.available_dt).toISOString().slice(0, 16)}
                     id="wd-available-from"
                     className="wd-date-time"
                     onChange={(e) => setAssignmentData({ ...assignmentData, available_dt: e.target.value })}
@@ -152,7 +155,7 @@ export default function AssignmentEditor() {
                   </Form.Label>
                   <Form.Control
                     type="datetime-local"
-                    value={assignmentData.until_dt}
+                    defaultValue={new Date(assignmentData.until_dt).toISOString().slice(0, 16)}
                     id="wd-available-until"
                     className="wd-date-time"
                     onChange={(e) => setAssignmentData({ ...assignmentData, until_dt: e.target.value })}
