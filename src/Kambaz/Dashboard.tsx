@@ -25,7 +25,7 @@ export default function Dashboard() {
   return (
     <div id="wd-dashboard">
       <h1 id="wd-dashboard-title">Dashboard
-        {currentUser.role === "STUDENT" && <Button className="float-end" onClick={() => setShowAll(!showAll)}>Enrollments</Button>}</h1>
+        {currentUser.role !== "FACULTY" && <Button className="float-end" onClick={() => setShowAll(!showAll)}>Enrollments</Button>}</h1>
       <hr />
       {currentUser.role === "FACULTY" && (
         <>
@@ -112,7 +112,7 @@ export default function Dashboard() {
                             Edit
                           </Button>
                         </>}
-                      {currentUser.role === "STUDENT" && (
+                      {currentUser.role !== "FACULTY" && (
                         enrollments.some((enrollment: any) => enrollment.user === currentUser._id && enrollment.course === course._id) ?
                           <Button className="btn btn-danger wd-card-delete-button" onClick={(e) => {
                             e.preventDefault();
