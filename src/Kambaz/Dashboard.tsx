@@ -17,6 +17,7 @@ export default function Dashboard() {
     startDate: "2023-09-10",
     endDate: "2023-12-15",
     description: "New Description",
+    image: "images/reactjs.jpg"
   };
   const [course, setCourse] = useState(newCourse);
   const [showAll, setShowAll] = useState(false);
@@ -35,6 +36,7 @@ export default function Dashboard() {
                 const updatedCourse = { ...course, _id: uuidv4() }
                 setCourse(updatedCourse)
                 dispatch(addNewCourse({ course: updatedCourse }))
+                dispatch(enroll({ user: currentUser, course: updatedCourse }))
               }}> Add </button>
             <button className="btn btn-warning float-end me-2"
               onClick={() => dispatch(updateCourse({ course }))} id="wd-update-course-click">
@@ -96,7 +98,7 @@ export default function Dashboard() {
                         <>
                           <Button onClick={(event) => {
                             event.preventDefault();
-                            dispatch(deleteCourse(course._id));
+                            dispatch(deleteCourse({ courseId: course._id }));
                           }} className="btn btn-danger wd-card-delete-button float-end"
                             id="wd-delete-course-click">
                             Delete
