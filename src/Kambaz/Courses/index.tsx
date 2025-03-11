@@ -7,12 +7,13 @@ import { Navigate, Routes, Route, useParams, useLocation } from "react-router";
 import { FaAlignJustify } from "react-icons/fa6";
 import PeopleTable from "./People/Table";
 import ProtectedCourseRoute from "./ProtectedCourseRoute";
+import { useSelector } from "react-redux";
 
-
-export default function Courses({ courses }: { courses: any[]; }) {
+export default function Courses() {
   const { cid } = useParams();
-  const course = courses.find((course) => course._id === cid);
+  const { courses } = useSelector((state: any) => state.coursesReducer);
   const { pathname } = useLocation();
+  const course = courses.find((c: any) => c._id === cid);
 
   return (
     <div id="wd-courses">
