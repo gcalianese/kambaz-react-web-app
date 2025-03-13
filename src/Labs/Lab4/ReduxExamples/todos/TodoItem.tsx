@@ -8,10 +8,10 @@ export default function TodoItem({ todo }: { todo: any }) {
         <ListGroup.Item key={todo.id}>
             <div className="">
                 {todo.title}
-                <Button onClick={() => dispatch(setTodo(todo))}
-                    id="wd-set-todo-click" className="btn ms-2 float-end"> Edit </Button>
                 <Button onClick={() => dispatch(deleteTodo(todo.id))}
                     id="wd-delete-todo-click" className="btn btn-danger ms-2 float-end"> Delete </Button>
+                <Button onClick={() => dispatch(setTodo(todo))}
+                    id="wd-set-todo-click" className="btn ms-2 float-end"> Edit </Button>
             </div >
         </ListGroup.Item>
 
