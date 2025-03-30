@@ -11,6 +11,7 @@ export default function WorkingWithArrays() {
         due: "2021-09-09",
         completed: false,
     });
+    const [errorMessage, setErrorMessage] = useState(null);
     return (
         <div id="wd-working-with-arrays">
             <h3>Working with Arrays</h3>
