@@ -9,6 +9,9 @@ const enrollmentsSlice = createSlice({
     name: "enrollments",
     initialState,
     reducers: {
+        setEnrollmentsR: (state, action) => {
+            state.enrollments = action.payload;
+        },
         unenroll: (state, { payload: { user, course } }) => {
             state.enrollments = state.enrollments.filter((e) =>
                 !(e.course === course._id && e.user === user._id)
@@ -28,7 +31,7 @@ const enrollmentsSlice = createSlice({
     },
 });
 
-export const { unenroll, enroll } =
+export const { setEnrollmentsR, unenroll, enroll } =
     enrollmentsSlice.actions;
 
 export default enrollmentsSlice.reducer;

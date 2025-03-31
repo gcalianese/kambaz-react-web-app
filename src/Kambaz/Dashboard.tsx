@@ -6,6 +6,8 @@ import { v4 as uuidv4 } from 'uuid';
 import * as courseClient from "./Courses/client";
 import * as userClient from "./Account/client";
 import * as enrollmentsClient from "./enrollmentsClient";
+import { setEnrollmentsR } from "./enrollmentsReducer";
+import { setCoursesR } from "./Courses/reducer";
 
 export default function Dashboard() {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
@@ -16,9 +18,11 @@ export default function Dashboard() {
       if (showAll) {
         const courses = await userClient.allCourses();
         setCourses(courses);
+        dispatch(setCoursesR(courses))
       } else {
         const courses = await userClient.findMyCourses();
         setCourses(courses);
+        dispatch(setCoursesR(courses))
       }
 
     } catch (error) {
@@ -34,6 +38,7 @@ export default function Dashboard() {
     try {
       const enrollments = await enrollmentsClient.getEnrollments();
       setEnrollments(enrollments);
+      dispatch(setEnrollmentsR(enrollments))
     } catch (error) {
       console.error(error);
     }
@@ -81,12 +86,12 @@ export default function Dashboard() {
   };
 
   const enroll = async (userId : any, courseId : any) => {
-    await enrollmentsClient.enroll(userId, courseId);
+    const status = await enrollmentsClient.enroll(userId, courseId);
     fetchEnrollments();
   };
 
   const unenroll = async (userId : any, courseId : any) => {
-    await enrollmentsClient.unenroll(userId, courseId);
+    const status = await enrollmentsClient.unenroll(userId, courseId);
     fetchEnrollments();
     fetchCourses();
   };
