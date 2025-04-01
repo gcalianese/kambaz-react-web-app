@@ -14,13 +14,12 @@ import * as assignmentClient from "./client"
 import { setAssignmentsR } from "./reducer";
 
 export default function Assignments() {
-  const [assignments, setAssignments] = useState<any[]>([]);
-  const { cid } = useParams();
+  const { assignments } = useSelector((state: any) => state.assignmentsReducer);
+  const { cid } = useParams()
   const dispatch = useDispatch();
   const fetchAssignments = async () => {
     try {
       const assignments = await assignmentClient.getAssignmentsForCourse(cid);
-      setAssignments(assignments);
       dispatch(setAssignmentsR(assignments))
       console.log(JSON.stringify(assignments))
     } catch (error) {
@@ -29,7 +28,6 @@ export default function Assignments() {
   };
   useEffect(() => {
     fetchAssignments();
-    console.log(JSON.stringify(assignments))
   }, []);
 
   const formatDate = (dateString: any) => {

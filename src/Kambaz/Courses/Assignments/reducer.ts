@@ -1,6 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-//import { assignments } from "../../Database";
-import { getAssignments } from "./client";
+import { createSlice } from "@reduxjs/toolkit";
 
 type Assignment = {
     _id: string;
@@ -39,7 +37,7 @@ const assignmentsSlice = createSlice({
             };
             state.assignments = [...state.assignments, newAssignment]
         },
-        deleteAssignment: (state, { payload: { assignment } }) => {
+        deleteAssignmentR: (state, { payload: { assignment } }) => {
             state.assignments = state.assignments.filter((a: any) => a._id !== assignment._id);
         },
         updateAssignmentR: (state, { payload: { assignment } }) => {
@@ -54,7 +52,7 @@ const assignmentsSlice = createSlice({
     },
 });
 
-export const { setAssignmentsR, addAssignment, deleteAssignment, updateAssignmentR, editAssignmentId } =
+export const { setAssignmentsR, addAssignment, deleteAssignmentR, updateAssignmentR, editAssignmentId } =
     assignmentsSlice.actions;
 
 export default assignmentsSlice.reducer;
