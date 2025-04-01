@@ -1,10 +1,11 @@
 import { Form, Row, Col, Button } from "react-bootstrap";
 import { HiOutlineX } from "react-icons/hi";
 import { useParams, useNavigate } from "react-router";
-import { updateAssignment, deleteAssignment, editAssignmentId }
+import { editAssignmentId, addAssignment }
   from "./reducer";
 import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getAssignments, createAssignment, updateAssignment, deleteAssignment, getAssignment } from "./client";
 
 export default function AssignmentEditor() {
   const { assignments } = useSelector((state: any) => state.assignmentsReducer);
@@ -16,7 +17,7 @@ export default function AssignmentEditor() {
   const navigate = useNavigate();
 
   if (!assignment) {
-    return <h2>Assignment not found</h2>;
+    return <h2>Assignment Not Found</h2>;
   }
 
   return (
@@ -176,7 +177,7 @@ export default function AssignmentEditor() {
         <Button type="button" id="wd-editor-cancel" className="btn-secondary"
           onClick={() => {
             if (!assignmentData._id.startsWith("A")) {
-              dispatch(deleteAssignment({ assignment: assignmentData }));
+              deleteAssignment(cid, aid);
             }
             navigate(`/Kambaz/Courses/${cid}/Assignments`)
           }
@@ -186,10 +187,14 @@ export default function AssignmentEditor() {
 
           if (!assignmentData._id.startsWith("A")) {
             dispatch(editAssignmentId({ assignment: assignmentData }))
+            createAssignment({ ...assignmentData, _id: "A" + assignmentData._id })
             setAssignmentData({ ...assignmentData, _id: "A" + assignmentData._id })
+          } else {
+            updateAssignment(assignmentData);
           }
 
-          dispatch(updateAssignment({ assignment: assignmentData }));
+          getAssignments();
+
           navigate(`/Kambaz/Courses/${cid}/Assignments`)
         }}
         >Save</Button>
