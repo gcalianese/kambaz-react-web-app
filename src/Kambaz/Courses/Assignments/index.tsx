@@ -6,19 +6,22 @@ import AssignmentsControlButtons from "./AssignmentsControlButtons"
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import { LuNotebookPen } from "react-icons/lu";
 import { useParams } from "react-router";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FaTrash } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import AssignmentDelete from "./AssignmentDelete";
 import * as assignmentClient from "./client"
+import { setAssignmentsR } from "./reducer";
 
 export default function Assignments() {
   const [assignments, setAssignments] = useState<any[]>([]);
   const { cid } = useParams();
+  const dispatch = useDispatch();
   const fetchAssignments = async () => {
     try {
       const assignments = await assignmentClient.getAssignmentsForCourse(cid);
       setAssignments(assignments);
+      dispatch(setAssignmentsR(assignments))
       console.log(JSON.stringify(assignments))
     } catch (error) {
       console.error(error);
@@ -26,6 +29,7 @@ export default function Assignments() {
   };
   useEffect(() => {
     fetchAssignments();
+    console.log(JSON.stringify(assignments))
   }, []);
 
   const formatDate = (dateString: any) => {

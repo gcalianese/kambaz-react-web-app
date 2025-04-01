@@ -1,8 +1,7 @@
 import { Form, Row, Col, Button } from "react-bootstrap";
 import { HiOutlineX } from "react-icons/hi";
 import { useParams, useNavigate } from "react-router";
-import { editAssignmentId, addAssignment }
-  from "./reducer";
+import { setAssignmentsR, editAssignmentId, addAssignment }from "./reducer";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { getAssignments, createAssignment, updateAssignment, deleteAssignment, getAssignment } from "./client";
@@ -16,8 +15,15 @@ export default function AssignmentEditor() {
   const [assignmentData, setAssignmentData] = useState(assignment);
   const navigate = useNavigate();
 
+  const addNewAssignment = async (a: any) => {
+    await createAssignment(a)
+    dispatch(addAssignment(a))
+    //setAssignmentsR({...assignments, a})
+  };
+
+
   if (!assignment) {
-    return <h2>Assignment Not Found</h2>;
+    return <h2>Assignment not found</h2>;
   }
 
   return (
@@ -187,8 +193,8 @@ export default function AssignmentEditor() {
 
           if (!assignmentData._id.startsWith("A")) {
             dispatch(editAssignmentId({ assignment: assignmentData }))
-            createAssignment({ ...assignmentData, _id: "A" + assignmentData._id })
             setAssignmentData({ ...assignmentData, _id: "A" + assignmentData._id })
+            addNewAssignment({ ...assignmentData, _id: "A" + assignmentData._id })
           } else {
             updateAssignment(assignmentData);
           }
