@@ -1,10 +1,16 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { enrollments } from "./Database";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from 'uuid';
 
-const initialState = {
-    enrollments: enrollments,
-};
+interface Enrollment {
+    _id: string;
+    user: string;
+    course: string;
+}
+
+const initialState: { enrollments: Enrollment[] } = {
+    enrollments: [],
+  };
+
 const enrollmentsSlice = createSlice({
     name: "enrollments",
     initialState,

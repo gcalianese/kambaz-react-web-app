@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import * as courseClient from "./Courses/client";
 import * as userClient from "./Account/client";
 import * as enrollmentsClient from "./enrollmentsClient";
-import { setEnrollmentsR } from "./enrollmentsReducer";
+import { enroll, unenroll, setEnrollmentsR } from "./enrollmentsReducer";
 import { setCoursesR } from "./Courses/reducer";
 
 export default function Dashboard() {
