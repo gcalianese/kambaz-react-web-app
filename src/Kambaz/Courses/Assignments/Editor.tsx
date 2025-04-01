@@ -1,9 +1,9 @@
 import { Form, Row, Col, Button } from "react-bootstrap";
 import { HiOutlineX } from "react-icons/hi";
 import { useParams, useNavigate } from "react-router";
-import { setAssignmentsR, editAssignmentId, addAssignment, updateAssignmentR }from "./reducer";
+import { editAssignmentId, addAssignment, updateAssignmentR }from "./reducer";
 import { useSelector, useDispatch } from "react-redux";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { getAssignments, createAssignment, updateAssignment, deleteAssignment, getAssignment } from "./client";
 
 export default function AssignmentEditor() {

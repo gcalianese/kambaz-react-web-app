@@ -7,13 +7,30 @@ import { Navigate, Routes, Route, useParams, useLocation } from "react-router";
 import { FaAlignJustify } from "react-icons/fa6";
 import PeopleTable from "./People/Table";
 import ProtectedCourseRoute from "./ProtectedCourseRoute";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchAllCourses } from "./client";
+import { setCoursesR } from "./reducer";
+import { useEffect } from "react";
 
 export default function Courses() {
   const { cid } = useParams();
   const { courses } = useSelector((state: any) => state.coursesReducer);
   const { pathname } = useLocation();
   const course = courses.find((c: any) => c._id === cid);
+
+  const dispatch = useDispatch();
+  const fetchCourses = async () => {
+    try {
+      const courses = await fetchAllCourses();
+      dispatch(setCoursesR(courses))
+      //console.log(JSON.stringify(courses))
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  useEffect(() => {
+    fetchCourses();
+  }, []);
 
   return (
     <div id="wd-courses">
