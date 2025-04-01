@@ -9,7 +9,7 @@ interface Enrollment {
 
 const initialState: { enrollments: Enrollment[] } = {
     enrollments: [],
-  };
+};
 
 const enrollmentsSlice = createSlice({
     name: "enrollments",
