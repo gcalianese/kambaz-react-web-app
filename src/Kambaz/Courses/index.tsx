@@ -23,7 +23,6 @@ export default function Courses() {
     try {
       const courses = await fetchAllCourses();
       dispatch(setCoursesR(courses))
-      //console.log(JSON.stringify(courses))
     } catch (error) {
       console.error(error);
     }

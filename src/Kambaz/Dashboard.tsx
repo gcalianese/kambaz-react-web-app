@@ -33,11 +33,10 @@ export default function Dashboard() {
     fetchCourses();
   }, [currentUser]);
 
-  const [enrollments, setEnrollments] = useState<any[]>([]);
+  const { enrollments } = useSelector((state: any) => state.enrollmentsReducer);
   const fetchEnrollments = async () => {
     try {
       const enrollments = await enrollmentsClient.getEnrollments();
-      setEnrollments(enrollments);
       dispatch(setEnrollmentsR(enrollments))
     } catch (error) {
       console.error(error);
@@ -85,14 +84,14 @@ export default function Dashboard() {
     }));
   };
 
-  const enroll = async (userId : any, courseId : any) => {
-    const status = await enrollmentsClient.enroll(userId, courseId);
-    fetchEnrollments();
+  const enrollInCourse = async (user : any, course : any) => {
+    const status = await enrollmentsClient.enroll(user._id, course._id);
+    dispatch(enroll({user, course}))
   };
 
-  const unenroll = async (userId : any, courseId : any) => {
-    const status = await enrollmentsClient.unenroll(userId, courseId);
-    fetchEnrollments();
+  const unenrollInCourse = async (user : any, course : any) => {
+    const status = await enrollmentsClient.unenroll(user._id, course._id);
+    dispatch(unenroll({user, course}))
     fetchCourses();
   };
 
@@ -112,7 +111,7 @@ export default function Dashboard() {
                 const updatedCourse = { ...course, _id: uuidv4(), image: "images/reactjs.jpg" }
                 setCourse(updatedCourse)
                 addNewCourse()
-                enroll(currentUser._id, updatedCourse._id);
+                enrollInCourse(currentUser, updatedCourse);
               }}> Add </button>
             <button className="btn btn-warning float-end me-2"
               onClick={() => updateCourse()} id="wd-update-course-click">
@@ -177,13 +176,13 @@ export default function Dashboard() {
                         enrollments.some((enrollment: any) => enrollment.user === currentUser._id && enrollment.course === course._id) ?
                           <Button className="btn btn-danger wd-card-delete-button" onClick={(e) => {
                             e.preventDefault();
-                            unenroll(currentUser._id, course._id);
+                            unenrollInCourse(currentUser, course);
                           }
                           }>Unenroll</Button>
                           :
                           <Button className="btn btn-success wd-card-delete-button" onClick={(e) => {
                             e.preventDefault();
-                            enroll(currentUser._id, course._id);
+                            enrollInCourse(currentUser, course);
                           }}>Enroll</Button>
                       )}
                     </div>
