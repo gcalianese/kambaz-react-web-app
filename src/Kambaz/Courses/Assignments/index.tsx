@@ -8,12 +8,25 @@ import { LuNotebookPen } from "react-icons/lu";
 import { useParams } from "react-router";
 import { useSelector } from "react-redux";
 import { FaTrash } from "react-icons/fa";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import AssignmentDelete from "./AssignmentDelete";
+import * as assignmentClient from "./client"
 
 export default function Assignments() {
-  const { assignments } = useSelector((state: any) => state.assignmentsReducer);
+  const [assignments, setAssignments] = useState<any[]>([]);
   const { cid } = useParams();
+  const fetchAssignments = async () => {
+    try {
+      const assignments = await assignmentClient.getAssignmentsForCourse(cid);
+      setAssignments(assignments);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  useEffect(() => {
+    fetchAssignments();
+  }, []);
+
   const formatDate = (dateString: any) => {
     return new Date(dateString)
       .toLocaleString('en-US', { month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true })
@@ -49,7 +62,6 @@ export default function Assignments() {
             </div>
             <ListGroup>
               {assignments
-                .filter((assignment: any) => assignment.course === cid)
                 .map((assignment: any) => (
                   <ListGroup.Item className="wd-assignment p-3 ps-1 list-group-item rounded-0 d-flex align-items-center" key={assignment._id}>
                     <span className="wd-assignment-icon-container">
