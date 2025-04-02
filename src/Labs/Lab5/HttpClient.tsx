@@ -20,6 +20,7 @@ export default function HttpClient() {
 
     return (
         <div>
+            <hr />
             <h3>HTTP Client</h3> <hr />
             <h4>Requesting on Click</h4>
             <button className="btn btn-primary me-2" onClick={fetchWelcomeOnClick}>

@@ -35,8 +35,7 @@ export default function WorkingWithObjects() {
                 Update Score
             </a>
             <FormControl className="w-75" id="wd-assignment-score" type="number"
-                defaultValue={assignment.score} onChange={(e) =>
-                    setAssignment({ ...assignment, score: parseFloat(e.target.value) })} />
+                defaultValue={assignment.score} onChange={(e) => setAssignment({ ...assignment, score: parseFloat(e.target.value) })} />
             <hr />
 
             <label>

@@ -11,7 +11,6 @@ export default function WorkingWithArrays() {
         due: "2021-09-09",
         completed: false,
     });
-    const [errorMessage, setErrorMessage] = useState(null);
     return (
         <div id="wd-working-with-arrays">
             <h3>Working with Arrays</h3>
@@ -71,13 +70,6 @@ export default function WorkingWithArrays() {
                 onChange={(e) => setTodo({ ...todo, completed: e.target.checked })}
             />
             <span className="ms-2">Completion Status</span></label>
-       
-
-
-
-
         </div>
-
-
     );
 }
