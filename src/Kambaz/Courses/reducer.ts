@@ -1,31 +1,43 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { courses } from "../Database";
 
-const initialState = {
-    courses: courses,
+type Course = {
+    _id: string,
+    name: string,
+    number: string,
+    startDate: string,
+    endDate: string,
+    department: string,
+    credits: number,
+    description: string,
+    image: string
+}
+
+const initialState: { courses: Course[] } = {
+    courses: [],
 };
+
 const coursesSlice = createSlice({
     name: "courses",
     initialState,
     reducers: {
         setCoursesR: (state, action) => {
             state.courses = action.payload;
-          },
+        },
 
-        addNewCourse: (state, { payload: { course }}) => {
+        addNewCourse: (state, { payload: { course } }) => {
             state.courses = [...state.courses, course] as any;
         },
-        deleteCourse: (state, { payload : { courseId }}) => {
+        deleteCourse: (state, { payload: { courseId } }) => {
             state.courses = (state.courses.filter((course) => course._id !== courseId));
         },
-        updateCourse: (state, { payload : { course }}) => {
+        updateCourse: (state, { payload: { course } }) => {
             state.courses = state.courses.map((c) => {
-                    if (c._id === course._id) {
-                        return course;
-                    } else {
-                        return c;
-                    }
-                })
+                if (c._id === course._id) {
+                    return course;
+                } else {
+                    return c;
+                }
+            })
         }
     },
 });
