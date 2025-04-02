@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router";
 import { editAssignmentId, addAssignment, updateAssignmentR }from "./reducer";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
-import { getAssignments, createAssignment, updateAssignment, deleteAssignment, getAssignment } from "./client";
+import { getAssignments, createAssignment, updateAssignment, deleteAssignment } from "./client";
 
 export default function AssignmentEditor() {
   const { assignments } = useSelector((state: any) => state.assignmentsReducer);
