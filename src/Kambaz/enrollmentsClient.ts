@@ -8,12 +8,10 @@ export const getEnrollments = async () => {
 
 export const unenroll = async (userId : any, courseId : any) => {
     const response = await axios.delete(`${ENROLLMENTS_API}/${userId}/${courseId}`);
-    console.log("sent unenrollment for user : " + userId + " course: " + courseId);
     return response.data;
 };
 
 export const enroll = async (userId : any, courseId : any) => {
     const response = await axios.post(`${ENROLLMENTS_API}/${userId}/${courseId}`);
-    console.log("sent enrollment for user : " + userId + " course: " + courseId);
     return response.data;
 };

@@ -21,7 +21,6 @@ export default function Assignments() {
     try {
       const assignments = await assignmentClient.getAssignmentsForCourse(cid);
       dispatch(setAssignmentsR(assignments))
-      console.log(JSON.stringify(assignments))
     } catch (error) {
       console.error(error);
     }

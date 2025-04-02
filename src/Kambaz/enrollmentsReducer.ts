@@ -22,8 +22,6 @@ const enrollmentsSlice = createSlice({
             state.enrollments = state.enrollments.filter((e) =>
                 !(e.course === course._id && e.user === user._id)
             );
-            console.log("After unenroll:", JSON.stringify(state.enrollments, null, 2));
-
         },
         enroll: (state, { payload: { user, course } }) => {
             const newEnrollment =
