@@ -1,10 +1,10 @@
 import { Form, Row, Col, Button } from "react-bootstrap";
 import { HiOutlineX } from "react-icons/hi";
 import { useParams, useNavigate } from "react-router";
-import { editAssignmentId, addAssignment, updateAssignmentR, setAssignmentsR }from "./reducer";
+import { editAssignmentId, addAssignment, updateAssignmentR }from "./reducer";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { createAssignment, updateAssignment, deleteAssignment, getAssignmentsForCourse } from "./client";
+import { createAssignment, updateAssignment, deleteAssignment } from "./client";
 
 export default function AssignmentEditor() {
   const { assignments } = useSelector((state: any) => state.assignmentsReducer);
