@@ -18,7 +18,7 @@ export default function AssignmentEditor() {
   const addNewAssignment = async (a: any) => {
     await createAssignment(a)
     dispatch(addAssignment(a))
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    await getAssignmentsForCourse(cid);
     const assignments = await getAssignmentsForCourse(cid);
     dispatch(setAssignmentsR(assignments))
   };
@@ -26,7 +26,7 @@ export default function AssignmentEditor() {
   const updateAnAssignment = async (a: any) => {
     await updateAssignment(a)
     dispatch(updateAssignmentR(a))
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    await getAssignmentsForCourse(cid)
     const assignments = await getAssignmentsForCourse(cid);
     dispatch(setAssignmentsR(assignments))
   };
