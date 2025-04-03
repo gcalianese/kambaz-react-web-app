@@ -39,7 +39,10 @@ export default function Assignments() {
   const [assignmentToDelete, setAssignmentToDelete] = useState<any>(null);
 
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => { setShow(false); 
+    fetchAssignments();
+  }
+
   const handleShow = (assignment: any) => {
     setAssignmentToDelete(assignment);
     setShow(true);
