@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router";
 import { editAssignmentId, addAssignment, updateAssignmentR, setAssignmentsR }from "./reducer";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { getAssignments, createAssignment, updateAssignment, deleteAssignment } from "./client";
+import { getAssignments, createAssignment, updateAssignment, deleteAssignment, getAssignmentsForCourse } from "./client";
 
 export default function AssignmentEditor() {
   const { assignments } = useSelector((state: any) => state.assignmentsReducer);
@@ -18,14 +18,14 @@ export default function AssignmentEditor() {
   const addNewAssignment = async (a: any) => {
     await createAssignment(a)
     dispatch(addAssignment(a))
-    const assignments = await getAssignments();
+    const assignments = await getAssignmentsForCourse(cid);
     dispatch(setAssignmentsR(assignments))
   };
 
   const updateAnAssignment = async (a: any) => {
     await updateAssignment(a)
     dispatch(updateAssignmentR(a))
-    const assignments = await getAssignments();
+    const assignments = await getAssignmentsForCourse(cid);
     dispatch(setAssignmentsR(assignments))
   };
 
@@ -210,8 +210,6 @@ export default function AssignmentEditor() {
           } else {
             updateAnAssignment({...assignmentData, course : cid });
           }
-
-          getAssignments();
 
           navigate(`/Kambaz/Courses/${cid}/Assignments`)
         }}
