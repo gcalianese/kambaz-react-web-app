@@ -19,6 +19,7 @@ export const getAssignment = async (cid : any, aid : any) => {
 
 export const createAssignment = async (assignment : any) => {
     const { data } = await axios.post(`${ASSIGNMENTS_API}`, assignment);
+    console.log("creating assignment: " + JSON.stringify(assignment))
     return data;
 };
 

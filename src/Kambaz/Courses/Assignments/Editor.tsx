@@ -203,10 +203,10 @@ export default function AssignmentEditor() {
 
           if (!assignmentData._id.startsWith("A")) {
             dispatch(editAssignmentId({ assignment: assignmentData }))
-            setAssignmentData({ ...assignmentData, _id: "A" + assignmentData._id })
-            addNewAssignment({ ...assignmentData, _id: "A" + assignmentData._id })
+            setAssignmentData({ ...assignmentData, _id: "A" + assignmentData._id, course : cid })
+            addNewAssignment({ ...assignmentData, _id: "A" + assignmentData._id, course : cid })
           } else {
-            updateAnAssignment(assignmentData);
+            updateAnAssignment({...assignmentData, course : cid });
           }
 
           getAssignments();
