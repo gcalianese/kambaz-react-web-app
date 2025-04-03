@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router";
 import { editAssignmentId, addAssignment, updateAssignmentR, setAssignmentsR }from "./reducer";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { createAssignment, updateAssignment, deleteAssignment } from "./client";
+import { createAssignment, updateAssignment, deleteAssignment, getAssignmentsForCourse } from "./client";
 
 export default function AssignmentEditor() {
   const { assignments } = useSelector((state: any) => state.assignmentsReducer);
@@ -18,14 +18,16 @@ export default function AssignmentEditor() {
   const addNewAssignment = async (a: any) => {
     await createAssignment(a)
     dispatch(addAssignment(a))
-   // const assignments = await getAssignmentsForCourse(cid);
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    const assignments = await getAssignmentsForCourse(cid);
     dispatch(setAssignmentsR(assignments))
   };
 
   const updateAnAssignment = async (a: any) => {
     await updateAssignment(a)
     dispatch(updateAssignmentR(a))
-   // const assignments = await getAssignmentsForCourse(cid);
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    const assignments = await getAssignmentsForCourse(cid);
     dispatch(setAssignmentsR(assignments))
   };
 

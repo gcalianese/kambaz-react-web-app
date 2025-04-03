@@ -19,6 +19,7 @@ export default function Assignments() {
   const dispatch = useDispatch();
   const fetchAssignments = async () => {
     try {
+      await new Promise((resolve) => setTimeout(resolve, 500));
       const assignments = await assignmentClient.getAssignmentsForCourse(cid);
       dispatch(setAssignmentsR(assignments))
     } catch (error) {
