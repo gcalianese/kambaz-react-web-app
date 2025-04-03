@@ -3,7 +3,7 @@ import { HiOutlineX } from "react-icons/hi";
 import { useParams, useNavigate } from "react-router";
 import { editAssignmentId, addAssignment, updateAssignmentR, setAssignmentsR }from "./reducer";
 import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getAssignments, createAssignment, updateAssignment, deleteAssignment } from "./client";
 
 export default function AssignmentEditor() {
@@ -26,6 +26,10 @@ export default function AssignmentEditor() {
     const assignments = await getAssignments();
     dispatch(setAssignmentsR(assignments))
   };
+
+  useEffect(() => {
+    setAssignmentData(assignment);
+  }, [assignment]);
 
 
   if (!assignment) {
