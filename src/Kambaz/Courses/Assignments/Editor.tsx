@@ -1,7 +1,7 @@
 import { Form, Row, Col, Button } from "react-bootstrap";
 import { HiOutlineX } from "react-icons/hi";
 import { useParams, useNavigate } from "react-router";
-import { editAssignmentId, addAssignment, updateAssignmentR }from "./reducer";
+import { editAssignmentId, addAssignment, updateAssignmentR, setAssignmentsR }from "./reducer";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { getAssignments, createAssignment, updateAssignment, deleteAssignment } from "./client";
@@ -23,6 +23,8 @@ export default function AssignmentEditor() {
   const updateAnAssignment = async (a: any) => {
     await updateAssignment(a)
     dispatch(updateAssignmentR(a))
+    const assignments = await getAssignments();
+    dispatch(setAssignmentsR(assignments))
   };
 
 
