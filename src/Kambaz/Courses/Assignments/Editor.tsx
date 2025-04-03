@@ -18,15 +18,15 @@ export default function AssignmentEditor() {
   const addNewAssignment = async (a: any) => {
     await createAssignment(a)
     dispatch(addAssignment(a))
-    const assignments = await getAssignmentsForCourse(cid);
-    dispatch(setAssignmentsR(assignments))
+   // const assignments = await getAssignmentsForCourse(cid);
+   // dispatch(setAssignmentsR(assignments))
   };
 
   const updateAnAssignment = async (a: any) => {
     await updateAssignment(a)
     dispatch(updateAssignmentR(a))
-    const assignments = await getAssignmentsForCourse(cid);
-    dispatch(setAssignmentsR(assignments))
+   // const assignments = await getAssignmentsForCourse(cid);
+   // dispatch(setAssignmentsR(assignments))
   };
 
   useEffect(() => {
@@ -205,10 +205,10 @@ export default function AssignmentEditor() {
 
           if (!assignmentData._id.startsWith("A")) {
             dispatch(editAssignmentId({ assignment: assignmentData }))
-            setAssignmentData({ ...assignmentData, _id: "A" + assignmentData._id, course : cid })
-            addNewAssignment({ ...assignmentData, _id: "A" + assignmentData._id, course : cid })
+            setAssignmentData({ ...assignmentData, _id: "A" + assignmentData._id})
+            addNewAssignment({ ...assignmentData, _id: "A" + assignmentData._id})
           } else {
-            updateAnAssignment({...assignmentData, course : cid });
+            updateAnAssignment({...assignmentData});
           }
 
           navigate(`/Kambaz/Courses/${cid}/Assignments`)
