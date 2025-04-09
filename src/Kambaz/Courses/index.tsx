@@ -10,7 +10,8 @@ import ProtectedCourseRoute from "./ProtectedCourseRoute";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAllCourses } from "./client";
 import { setCoursesR } from "./reducer";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { getUsersForCourse } from "../enrollmentsClient";
 
 export default function Courses() {
   const { cid } = useParams();
@@ -30,6 +31,22 @@ export default function Courses() {
   useEffect(() => {
     fetchCourses();
   }, []);
+
+  const [users, setUsers] = useState<any[]>([]);
+
+  const fetchUsers = async () => {
+    try {
+      const users = await getUsersForCourse(cid);
+      setUsers(users);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  useEffect(() => {
+    if (cid) {
+      fetchUsers();
+    }
+  }, []); 
 
   return (
     <div id="wd-courses">
@@ -51,7 +68,7 @@ export default function Courses() {
             <Route path="Assignments/:aid" element={<ProtectedCourseRoute><AssignmentEditor /></ProtectedCourseRoute>} />
             <Route path="Quizzes" element={<ProtectedCourseRoute><h2>Quizzes</h2></ProtectedCourseRoute>} />
             <Route path="Grades" element={<ProtectedCourseRoute><h2>Grades</h2></ProtectedCourseRoute>} />
-            <Route path="People" element={<ProtectedCourseRoute><PeopleTable /></ProtectedCourseRoute>} />
+            <Route path="People" element={<ProtectedCourseRoute><PeopleTable users={users}/></ProtectedCourseRoute>} />
           </Routes>
         </div>
       </div>

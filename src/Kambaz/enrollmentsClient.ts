@@ -15,3 +15,10 @@ export const enroll = async (userId : any, courseId : any) => {
     const response = await axios.post(`${ENROLLMENTS_API}/${userId}/${courseId}`);
     return response.data;
 };
+
+
+export const getUsersForCourse = async (courseId : any) => {
+    const response = await axios.get(`${REMOTE_SERVER}/api/users/course/${courseId}`);
+    return response.data;
+};
+
