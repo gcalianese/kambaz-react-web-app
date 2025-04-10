@@ -16,7 +16,7 @@ export default function Dashboard() {
   const fetchCourses = async () => {
     try {
       if (showAll) {
-        const courses = await userClient.allCourses();
+        const courses = await courseClient.fetchAllCourses();
         setCourses(courses);
         dispatch(setCoursesR(courses))
       } else {
@@ -67,7 +67,8 @@ export default function Dashboard() {
   const dispatch = useDispatch();
 
   const addNewCourse = async () => {
-    const newCourse = await userClient.createCourse(course);
+    const newCourse = await courseClient.createCourse(course);
+    console.log("adding new course " + JSON.stringify(newCourse))
     setCourses([...courses, newCourse]);
   };
 
