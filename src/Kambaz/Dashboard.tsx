@@ -68,7 +68,6 @@ export default function Dashboard() {
 
   const addNewCourse = async () => {
     const newCourse = await courseClient.createCourse(course);
-    console.log("adding new course " + JSON.stringify(newCourse))
     setCourses([...courses, newCourse]);
   };
 
