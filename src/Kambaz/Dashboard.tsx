@@ -38,7 +38,6 @@ export default function Dashboard() {
     }
   };
 
-  const { enrollments } = useSelector((state: any) => state.enrollmentsReducer);
   const fetchEnrollments = async () => {
     try {
       const enrollments = await enrollmentsClient.getEnrollments();

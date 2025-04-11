@@ -10,7 +10,6 @@ export default function ProtectedCourseRoute({ children }: { children: JSX.Eleme
     const { currentUser } = useSelector((state: any) => state.accountReducer);
     const { cid } = useParams();
     const dispatch = useDispatch();
-
     const { enrollments } = useSelector((state: any) => state.enrollmentsReducer);
     const [checked, setChecked] = useState(false);
 
