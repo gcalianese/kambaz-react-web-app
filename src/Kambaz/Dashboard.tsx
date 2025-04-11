@@ -11,27 +11,26 @@ import { setCoursesR } from "./Courses/reducer";
 
 export default function Dashboard() {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
+  const [allCourses, setAllCourses] = useState([])
+  const [myCourses, setMyCourses] = useState([])
 
   const [courses, setCourses] = useState<any[]>([]);
   const fetchCourses = async () => {
     try {
-      if (showAll) {
-        const courses = await courseClient.fetchAllCourses();
-        setCourses(courses);
-        dispatch(setCoursesR(courses))
-      } else {
-        const courses = await userClient.findMyCourses();
-        setCourses(courses);
-        dispatch(setCoursesR(courses))
-      }
-
+      const allCourses = await courseClient.fetchAllCourses();
+      setAllCourses(allCourses)
+      const myCourses = await userClient.findMyCourses();
+      setMyCourses(myCourses)
+      const courses = pickCourses();
+      setCourses(courses)
+      dispatch(setCoursesR(courses))
     } catch (error) {
       console.error(error);
     }
   };
   useEffect(() => {
     fetchCourses();
-  }, [currentUser]);
+  }, [currentUser, courses, myCourses, allCourses]);
 
   const { enrollments } = useSelector((state: any) => state.enrollmentsReducer);
   const fetchEnrollments = async () => {
@@ -64,6 +63,14 @@ export default function Dashboard() {
     fetchCourses();
   }, [showAll]);
 
+  const pickCourses = () => {
+    if (showAll) {
+      return allCourses;
+    } else {
+      return myCourses;
+    }
+  }
+
   const dispatch = useDispatch();
 
   const addNewCourse = async () => {
@@ -84,14 +91,14 @@ export default function Dashboard() {
     }));
   };
 
-  const enrollInCourse = async (user : any, course : any) => {
+  const enrollInCourse = async (user: any, course: any) => {
     await enrollmentsClient.enroll(user._id, course._id);
-    dispatch(enroll({user, course}))
+    dispatch(enroll({ user, course }))
   };
 
-  const unenrollInCourse = async (user : any, course : any) => {
+  const unenrollInCourse = async (user: any, course: any) => {
     await enrollmentsClient.unenroll(user._id, course._id);
-    dispatch(unenroll({user, course}))
+    dispatch(unenroll({ user, course }))
     fetchCourses();
   };
 
