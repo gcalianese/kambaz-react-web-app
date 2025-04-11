@@ -20,7 +20,6 @@ export default function Dashboard() {
       const allCourses = await courseClient.fetchAllCourses();
       const myCourses = await userClient.findCoursesForUser(currentUser._id);
       setMyCourses(myCourses)
-      const courses = pickCourses();
 
       const allCoursesE = allCourses.map((course: any) => {
         if (myCourses.find((c: any) => c._id === course._id)) {
@@ -30,15 +29,14 @@ export default function Dashboard() {
         }
       });
       setAllCourses(allCoursesE)
+
+      const courses = pickCourses();
       setCourses(courses)
       dispatch(setCoursesR(courses))
     } catch (error) {
       console.error(error);
     }
   };
-  useEffect(() => {
-    fetchCourses();
-  }, [currentUser, courses]);
 
   const { enrollments } = useSelector((state: any) => state.enrollmentsReducer);
   const fetchEnrollments = async () => {
@@ -69,7 +67,13 @@ export default function Dashboard() {
 
   useEffect(() => {
     fetchCourses();
-  }, [showAll]);
+  }, [currentUser]);
+
+  useEffect(() => {
+    const visible = showAll ? allCourses : myCourses;
+    setCourses(visible);
+    dispatch(setCoursesR(visible));
+  }, [showAll, allCourses, myCourses]);
 
   const pickCourses = () => {
     if (showAll) {
@@ -102,15 +106,16 @@ export default function Dashboard() {
   const enrollInCourse = async (user: any, course: any) => {
     await enrollmentsClient.enroll(user._id, course._id);
     dispatch(enroll({ user, course }))
+    await fetchEnrollments();
+    await fetchCourses();
   };
 
   const unenrollInCourse = async (user: any, course: any) => {
     await enrollmentsClient.unenroll(user._id, course._id);
     dispatch(unenroll({ user, course }))
-    fetchCourses();
+    await fetchEnrollments();
+    await fetchCourses();
   };
-
-
 
   return (
     <div id="wd-dashboard">
@@ -188,7 +193,7 @@ export default function Dashboard() {
                           </Button>
                         </>}
                       {currentUser.role !== "FACULTY" && currentUser.role !== "ADMIN" && showAll && (
-                        enrollments.some((enrollment: any) => enrollment.user === currentUser._id && enrollment.course === course._id) ?
+                        course.enrolled ?
                           <Button className="btn btn-danger wd-card-delete-button" onClick={(e) => {
                             e.preventDefault();
                             unenrollInCourse(currentUser, course);
