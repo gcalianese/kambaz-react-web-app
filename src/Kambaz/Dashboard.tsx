@@ -86,6 +86,7 @@ export default function Dashboard() {
 
   const addNewCourse = async () => {
     const newCourse = await courseClient.createCourse(course);
+    enrollInCourse(currentUser, course);
     setCourses([...courses, newCourse]);
   };
 
@@ -130,7 +131,6 @@ export default function Dashboard() {
                 const updatedCourse = { ...course, _id: uuidv4(), image: "images/reactjs.jpg" }
                 setCourse(updatedCourse)
                 addNewCourse()
-                enrollInCourse(currentUser, updatedCourse);
               }}> Add </button>
             <button className="btn btn-warning float-end me-2"
               onClick={() => updateCourse()} id="wd-update-course-click">
