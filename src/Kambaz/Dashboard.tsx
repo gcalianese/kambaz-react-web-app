@@ -19,7 +19,7 @@ export default function Dashboard() {
     try {
       const allCourses = await courseClient.fetchAllCourses();
       setAllCourses(allCourses)
-      const myCourses = await userClient.findMyCourses();
+      const myCourses = await userClient.findCoursesForUser(currentUser._id);
       setMyCourses(myCourses)
       const courses = pickCourses();
       setCourses(courses)
@@ -30,7 +30,7 @@ export default function Dashboard() {
   };
   useEffect(() => {
     fetchCourses();
-  }, [currentUser, courses, myCourses, allCourses]);
+  }, [currentUser, courses]);
 
   const { enrollments } = useSelector((state: any) => state.enrollmentsReducer);
   const fetchEnrollments = async () => {
@@ -70,6 +70,12 @@ export default function Dashboard() {
       return myCourses;
     }
   }
+
+  useEffect(() => {
+    fetchCourses();
+  }, [showAll]);
+
+  
 
   const dispatch = useDispatch();
 

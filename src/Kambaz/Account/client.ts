@@ -64,6 +64,12 @@ export const createUser = async (user: any) => {
     return response.data;
 };
 
+export const findCoursesForUser = async (userId: string) => {
+    const response = await axiosWithCredentials.get(`${USERS_API}/${userId}/courses`);
+    return response.data;
+};
+
+
 
 
 
