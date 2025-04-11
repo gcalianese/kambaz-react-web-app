@@ -115,7 +115,7 @@ export default function Dashboard() {
   return (
     <div id="wd-dashboard">
       <h1 id="wd-dashboard-title">Dashboard
-        {currentUser.role !== "ADMIN" && <Button className="float-end" onClick={() => setShowAll(!showAll)}>{showAll ? "My Courses" : "All Courses"}</Button>}</h1>
+        {currentUser.role !== "ADMIN" && currentUser.role !== "FACULTY" && <Button className="float-end" onClick={() => setShowAll(!showAll)}>{showAll ? "My Courses" : "All Courses"}</Button>}</h1>
       <hr />
       {currentUser.role === "FACULTY" && (
         <>
