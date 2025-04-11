@@ -18,10 +18,18 @@ export default function Dashboard() {
   const fetchCourses = async () => {
     try {
       const allCourses = await courseClient.fetchAllCourses();
-      setAllCourses(allCourses)
       const myCourses = await userClient.findCoursesForUser(currentUser._id);
       setMyCourses(myCourses)
       const courses = pickCourses();
+
+      const allCoursesE = allCourses.map((course: any) => {
+        if (myCourses.find((c: any) => c._id === course._id)) {
+          return { ...course, enrolled: true };
+        } else {
+          return course;
+        }
+      });
+      setAllCourses(allCoursesE)
       setCourses(courses)
       dispatch(setCoursesR(courses))
     } catch (error) {
@@ -71,12 +79,6 @@ export default function Dashboard() {
     }
   }
 
-  useEffect(() => {
-    fetchCourses();
-  }, [showAll]);
-
-  
-
   const dispatch = useDispatch();
 
   const addNewCourse = async () => {
@@ -113,7 +115,7 @@ export default function Dashboard() {
   return (
     <div id="wd-dashboard">
       <h1 id="wd-dashboard-title">Dashboard
-        {currentUser.role !== "FACULTY" && <Button className="float-end" onClick={() => setShowAll(!showAll)}>Enrollments</Button>}</h1>
+        {currentUser.role !== "ADMIN" && <Button className="float-end" onClick={() => setShowAll(!showAll)}>{showAll ? "My Courses" : "All Courses"}</Button>}</h1>
       <hr />
       {currentUser.role === "FACULTY" && (
         <>
@@ -185,7 +187,7 @@ export default function Dashboard() {
                             Edit
                           </Button>
                         </>}
-                      {currentUser.role !== "FACULTY" && (
+                      {currentUser.role !== "FACULTY" && currentUser.role !== "ADMIN" && showAll && (
                         enrollments.some((enrollment: any) => enrollment.user === currentUser._id && enrollment.course === course._id) ?
                           <Button className="btn btn-danger wd-card-delete-button" onClick={(e) => {
                             e.preventDefault();
