@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { useParams } from "react-router";
-import { getEnrollments } from "../enrollmentsClient";
+import { getEnrollments, enroll } from "../enrollmentsClient";
 import { setEnrollmentsR } from "../enrollmentsReducer";
 import { useEffect, useState } from "react";
 
@@ -12,6 +12,10 @@ export default function ProtectedCourseRoute({ children }: { children: JSX.Eleme
     const dispatch = useDispatch();
     const { enrollments } = useSelector((state: any) => state.enrollmentsReducer);
     const [checked, setChecked] = useState(false);
+
+    const isEnrolled = enrollments.some(
+        (enrollment: any) => enrollment.user === currentUser._id && enrollment.course === cid
+    );
 
     useEffect(() => {
         const fetchEnrollments = async () => {
@@ -25,17 +29,13 @@ export default function ProtectedCourseRoute({ children }: { children: JSX.Eleme
             }
         };
         fetchEnrollments();
-    }, [dispatch]);
-
-    const isEnrolled = enrollments.some(
-        (enrollment: any) => enrollment.user === currentUser._id && enrollment.course === cid
-    );
+    }, [dispatch, isEnrolled, cid]);
 
     if (!checked) {
         return null;
     }
 
-    if (!isEnrolled) {
+    if (!isEnrolled && currentUser.role !== "ADMIN") {
         return <Navigate to="/Kambaz/Dashboard" />;
     }
 
