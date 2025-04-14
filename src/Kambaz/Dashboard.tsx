@@ -22,6 +22,7 @@ export default function Dashboard() {
       setMyCourses(myCourses)
 
       const allCoursesE = allCourses.map((course: any) => {
+        console.log(JSON.stringify(myCourses))
         if (myCourses.find((c: any) => c._id === course._id)) {
           return { ...course, enrolled: true };
         } else {
@@ -84,7 +85,7 @@ export default function Dashboard() {
 
   const dispatch = useDispatch();
 
-  const addNewCourse = async () => {
+  const addNewCourse = async (course : any) => {
     const newCourse = await courseClient.createCourse(course);
     enrollInCourse(currentUser, course);
     setCourses([...courses, newCourse]);
@@ -93,6 +94,7 @@ export default function Dashboard() {
   const deleteCourse = async (courseId: string) => {
     await courseClient.deleteCourse(courseId);
     setCourses(courses.filter((course) => course._id !== courseId));
+    await fetchEnrollments();
   };
 
   const updateCourse = async () => {
@@ -130,7 +132,7 @@ export default function Dashboard() {
               onClick={() => {
                 const updatedCourse = { ...course, _id: uuidv4(), image: "images/reactjs.jpg" }
                 setCourse(updatedCourse)
-                addNewCourse()
+                addNewCourse(updatedCourse)
               }}> Add </button>
             <button className="btn btn-warning float-end me-2"
               onClick={() => updateCourse()} id="wd-update-course-click">
