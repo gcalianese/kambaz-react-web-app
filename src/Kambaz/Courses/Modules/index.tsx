@@ -10,6 +10,7 @@ import ModulesControls from "./ModulesControl";
 import { FormControl } from "react-bootstrap";
 import * as coursesClient from "../client";
 import * as modulesClient from "./client";
+import { v4 as uuidv4 } from "uuid";
 
 
 export default function Modules() {
@@ -28,11 +29,13 @@ export default function Modules() {
   }, []);
 
   const addModuleHandler = async () => {
-    const newModule = await coursesClient.createModuleForCourse(cid!, {
+    console.log("add button clicked");
+    await coursesClient.createModuleForCourse(cid!, {
       name: moduleName,
       course: cid,
+      _id: uuidv4(),
     });
-    dispatch(addModule(newModule));
+    await fetchModules();
     setModuleName("");
   };
 

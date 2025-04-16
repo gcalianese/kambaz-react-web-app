@@ -1,10 +1,11 @@
 import { Table } from "react-bootstrap";
 import { FaUserCircle } from "react-icons/fa";
 import PeopleDetails from "./Details";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import { useSelector } from "react-redux";
 
 export default function PeopleTable({ users = [] }: { users?: any[] }) {
+    const { pathname } = useLocation();
     const { currentUser } = useSelector((state: any) => state.accountReducer);
 
     return (
@@ -19,7 +20,7 @@ export default function PeopleTable({ users = [] }: { users?: any[] }) {
                         .map((user: any) => (
                             <tr key={user._id}>
                                 <td className="wd-full-name text-nowrap">
-                                    {currentUser.role === "ADMIN" ? (<Link to={`/Kambaz/Account/Users/${user._id}`} className="text-decoration-none">
+                                    {currentUser.role === "ADMIN" && !pathname.includes("People") ? (<Link to={`/Kambaz/Account/Users/${user._id}`} className="text-decoration-none">
                                         <FaUserCircle className="me-2 fs-1 text-secondary" />
                                         <span className="wd-first-name text-danger">{user.firstName}{" "}</span>
                                         <span className="wd-last-name text-danger">{user.lastName}</span>
