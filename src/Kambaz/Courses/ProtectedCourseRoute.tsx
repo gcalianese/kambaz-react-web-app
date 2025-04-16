@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { useParams } from "react-router";
-import { getEnrollments, enroll } from "../enrollmentsClient";
+import { getEnrollments } from "../enrollmentsClient";
 import { setEnrollmentsR } from "../enrollmentsReducer";
 import { useEffect, useState } from "react";
 

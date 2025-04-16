@@ -9,10 +9,8 @@ export default function Users() {
 
     const [users, setUsers] = useState<any[]>([]);
     const [role, setRole] = useState("");
-    const [name, setName] = useState("");
 
     const filterUsersByName = async (name: string) => {
-        setName(name);
         if (name) {
             const users = await client.findUsersByPartialName(name);
             setUsers(users);
