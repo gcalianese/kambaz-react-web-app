@@ -22,7 +22,6 @@ export default function Dashboard() {
       setMyCourses(myCourses)
 
       const allCoursesE = allCourses.map((course: any) => {
-        console.log(JSON.stringify(myCourses))
         if (myCourses.find((c: any) => c._id === course._id)) {
           return { ...course, enrolled: true };
         } else {
