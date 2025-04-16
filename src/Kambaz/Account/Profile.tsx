@@ -13,11 +13,13 @@ export default function Profile() {
   const updateProfile = async () => {
     const updatedProfile = await client.updateUser(profile);
     dispatch(setCurrentUser(updatedProfile));
+    await fetchProfile();
   };
 
-  const fetchProfile = () => {
+  const fetchProfile = async () => {
     if (!currentUser) return navigate("/Kambaz/Account/Signin");
-    setProfile(currentUser);
+    const profile = await client.profile();
+    setProfile(profile);
   };
   const signout = async () => {
     await client.signout();
