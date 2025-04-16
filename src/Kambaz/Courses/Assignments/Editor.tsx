@@ -17,16 +17,12 @@ export default function AssignmentEditor() {
 
   const addNewAssignment = async (a: any) => {
     await createAssignment(a)
-    dispatch(addAssignment(a))
-    await getAssignmentsForCourse(cid);
     const assignments = await getAssignmentsForCourse(cid);
     dispatch(setAssignmentsR(assignments))
   };
 
   const updateAnAssignment = async (a: any) => {
     await updateAssignment(a)
-    dispatch(updateAssignmentR(a))
-    await getAssignmentsForCourse(cid)
     const assignments = await getAssignmentsForCourse(cid);
     dispatch(setAssignmentsR(assignments))
   };

@@ -25,7 +25,7 @@ export default function PeopleDetails() {
         await client.updateUser(updatedUser);
         setUser(updatedUser);
         setEditing(false);
-        navigate(-1);
+        navigate('/Kambaz/Account/Users');
     };
 
 
