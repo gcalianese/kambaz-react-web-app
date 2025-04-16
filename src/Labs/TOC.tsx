@@ -20,9 +20,9 @@ export default function TOC() {
       <Nav.Item> <Nav.Link as={Link} to="/Labs/Lab5" id="wd-a5"
         active={pathname.includes("Lab5")}> Lab 5 </Nav.Link> </Nav.Item>
       <Nav.Item> <Nav.Link as={Link} to="/Kambaz" id="wd-a3"> Kambaz </Nav.Link> </Nav.Item>
-      <Nav.Item> <Nav.Link href="https://github.com/gcalianese/kambaz-react-web-app/tree/a5" target="_blank" id="wd-github" active={pathname.includes("github")}> My GitHub </Nav.Link> </Nav.Item>
-      <Nav.Item> <Nav.Link href="https://github.com/gcalianese/kambaz-node-server-app/tree/a5" target="_blank" id="wd-github-server" active={pathname.includes("server") && !pathname.includes("root")}> My Server </Nav.Link> </Nav.Item>
-      <Nav.Item> <Nav.Link href="https://kambaz-node-server-app-6ug2.onrender.com" target="_blank" id="wd-server-root" active={pathname.includes("root")}> Server Root </Nav.Link> </Nav.Item>
+      <Nav.Item> <Nav.Link href="https://github.com/gcalianese/kambaz-react-web-app/tree/a6" target="_blank" id="wd-github" active={pathname.includes("github")}> My GitHub </Nav.Link> </Nav.Item>
+      <Nav.Item> <Nav.Link href="https://github.com/gcalianese/kambaz-node-server-app/tree/a6" target="_blank" id="wd-github-server" active={pathname.includes("server") && !pathname.includes("root")}> My Server </Nav.Link> </Nav.Item>
+      <Nav.Item> <Nav.Link href="https://kambaz-node-server-app-a6-4hsj.onrender.com" target="_blank" id="wd-server-root" active={pathname.includes("root")}> Server Root </Nav.Link> </Nav.Item>
     </Nav>
   );
 }
