@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux";
 import * as client from "./client";
 
 export default function Signin() {
-  const REMOTE_SERVER = import.meta.env.VITE_REMOTE_SERVER;
   const [credentials, setCredentials] = useState<any>({});
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -16,8 +15,6 @@ export default function Signin() {
     dispatch(setCurrentUser(user));
     navigate("/Kambaz/Dashboard");
   };
-
-  console.log("Remote server: " + REMOTE_SERVER)
 
   return (
     <div id="wd-signin-screen">
