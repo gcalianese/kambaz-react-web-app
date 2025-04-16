@@ -1,7 +1,7 @@
 import { Form, Row, Col, Button } from "react-bootstrap";
 import { HiOutlineX } from "react-icons/hi";
 import { useParams, useNavigate } from "react-router";
-import { editAssignmentId, addAssignment, updateAssignmentR, setAssignmentsR }from "./reducer";
+import { editAssignmentId, setAssignmentsR }from "./reducer";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { createAssignment, updateAssignment, deleteAssignment, getAssignmentsForCourse } from "./client";

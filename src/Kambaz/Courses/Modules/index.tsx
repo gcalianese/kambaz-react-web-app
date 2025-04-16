@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { addModule, editModule, updateModule, deleteModule, setModules }
+import { editModule, updateModule, deleteModule, setModules }
   from "./reducer";
 import { useSelector, useDispatch } from "react-redux";
 import ModuleControlButtons from "./ModuleControlButtons";
