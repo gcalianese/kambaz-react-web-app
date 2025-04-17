@@ -29,7 +29,6 @@ export default function Modules() {
   }, []);
 
   const addModuleHandler = async () => {
-    console.log("add button clicked");
     await coursesClient.createModuleForCourse(cid!, {
       name: moduleName,
       course: cid,
